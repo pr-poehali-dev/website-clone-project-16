@@ -61,8 +61,83 @@ const STEPS = [
   { n: 'ШАГ 4', text: <span>Вы скрутите свою первую лозу и изготовите первое изделие. <b>Поздравляю!</b></span> },
 ];
 
+const FORM_ID = 's_f_981236568851782220940';
+
+function showError(id: string, msg: string) {
+  const el = document.querySelector(id) as HTMLElement | null;
+  if (el) el.textContent = msg;
+}
+function isEmailValid(val: string, errId: string) {
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.toLowerCase());
+  showError(errId, ok ? '' : 'Некорректный email');
+  return ok;
+}
+function isRequired(val: string, errId: string) {
+  const ok = val !== '';
+  showError(errId, ok ? '' : 'Поле не заполнено');
+  return ok;
+}
+
 export default function Index() {
   const { h, m, s } = useTimer();
+
+  useEffect(() => {
+    const f = document.getElementById(FORM_ID) as HTMLFormElement | null;
+    if (!f) return;
+
+    // Партнёрский пиксель
+    const fa = f.action;
+    if (fa) {
+      const u = new URL(fa);
+      const c = u.searchParams.get('o') + u.searchParams.get('w') + Math.round(Date.now() / 1000);
+      f.action = fa + '&c=' + c;
+      const img = new Image(0, 0);
+      const subid = document.querySelector('input[name=subid]') as HTMLInputElement | null;
+      img.src = 'https://salid.site/pixel.php' + u.search + '&c=' + c + '&a_l=' + window.location.href;
+      if (subid) img.src += '&subid=' + subid.value;
+      f.insertAdjacentElement('afterEnd', img);
+    }
+
+    function isChecked(el: HTMLInputElement) {
+      const row = document.getElementById('row_approval_981236568851782220940');
+      if (!el.checked) { row?.classList.add('outline', 'outline-2', 'outline-red-400', 'rounded'); return false; }
+      row?.classList.remove('outline', 'outline-2', 'outline-red-400', 'rounded');
+      return true;
+    }
+
+    function validateForm() {
+      const name = (document.querySelector('#name_981236568851782220940') as HTMLInputElement).value.trim();
+      const email = (document.querySelector('#email_981236568851782220940') as HTMLInputElement).value.trim();
+      const phone = (document.querySelector('#phone_981236568851782220940') as HTMLInputElement).value.trim();
+      const approval = document.querySelector('#approval_981236568851782220940') as HTMLInputElement;
+      const eOk = isEmailValid(email, '#e_m_981236568851782220940');
+      const nOk = isRequired(name, '#e_n_981236568851782220940');
+      const pOk = isRequired(phone, '#e_f_981236568851782220940');
+      const aOk = isChecked(approval);
+      if (eOk && nOk && pOk && aOk) f.submit();
+    }
+
+    const btn = document.getElementById('btnform_981236568851782220940');
+    btn?.addEventListener('click', (e) => { e.preventDefault(); validateForm(); });
+
+    let debounceTimer: ReturnType<typeof setTimeout>;
+    const onInput = (e: Event) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const target = e.target as HTMLInputElement;
+        if (target.id === 'name_981236568851782220940') isRequired(target.value.trim(), '#e_n_981236568851782220940');
+        if (target.id === 'email_981236568851782220940') isEmailValid(target.value.trim(), '#e_m_981236568851782220940');
+        if (target.id === 'phone_981236568851782220940') isRequired(target.value.trim(), '#e_f_981236568851782220940');
+        if (target.id === 'approval_981236568851782220940') isChecked(target);
+      }, 500);
+    };
+    f.addEventListener('input', onInput);
+
+    return () => {
+      btn?.removeEventListener('click', validateForm);
+      f.removeEventListener('input', onInput);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white font-sans text-[#1F5B4E] overflow-x-hidden pb-10 md:pb-0">
@@ -421,71 +496,7 @@ export default function Index() {
                 </button>
               </form>
 
-              {/* Партнёрский скрипт — инициализация формы и валидация */}
-              <script dangerouslySetInnerHTML={{ __html: `
-                (function() {
-                  var f = document.getElementById('s_f_981236568851782220940');
-                  if (!f) return;
-                  var fa = f.action;
-                  if (fa) {
-                    var u = new URL(fa);
-                    var c = u.searchParams.get("o") + u.searchParams.get("w") + Math.round((new Date()).getTime() / 1000);
-                    f.action = fa + '&c=' + c;
-                    var img = new Image(0, 0);
-                    var subid = document.querySelector('input[name=subid]');
-                    img.src = 'https://salid.site/pixel.php' + u.search + '&c=' + c + '&a_l=' + window.location.href;
-                    if (subid) img.src += '&subid=' + subid.value;
-                    f.insertAdjacentElement('afterEnd', img);
-                  }
 
-                  function showError(id, msg) {
-                    var el = document.querySelector(id);
-                    if (el) el.textContent = msg;
-                  }
-                  function isEmailValid(val, errId) {
-                    var ok = /^[^\\s@]+@[^\\s@]+[.][^\\s@]+$/.test(val.toLowerCase());
-                    showError(errId, ok ? '' : 'Некорректный email');
-                    return ok;
-                  }
-                  function isRequired(val, errId) {
-                    var ok = val !== '';
-                    showError(errId, ok ? '' : 'Поле не заполнено');
-                    return ok;
-                  }
-                  function isChecked(el) {
-                    var row = document.getElementById('row_approval_981236568851782220940');
-                    if (!el.checked) { row && row.classList.add('outline', 'outline-red-400', 'rounded'); return false; }
-                    row && row.classList.remove('outline', 'outline-red-400', 'rounded');
-                    return true;
-                  }
-                  function validateForm() {
-                    var eOk = isEmailValid(document.querySelector('#email_981236568851782220940').value.trim(), '#e_m_981236568851782220940');
-                    var nOk = isRequired(document.querySelector('#name_981236568851782220940').value.trim(), '#e_n_981236568851782220940');
-                    var pOk = isRequired(document.querySelector('#phone_981236568851782220940').value.trim(), '#e_f_981236568851782220940');
-                    var aOk = isChecked(document.querySelector('#approval_981236568851782220940'));
-                    if (eOk && nOk && pOk && aOk) f.submit();
-                  }
-
-                  document.getElementById('btnform_981236568851782220940').addEventListener('click', function(e) {
-                    e.preventDefault(); validateForm();
-                  });
-
-                  function debounce(fn, delay) {
-                    var t; return function() { clearTimeout(t); t = setTimeout(fn.bind(this, arguments[0]), delay || 500); };
-                  }
-                  f.addEventListener('input', debounce(function(e) {
-                    var id = e.target.id;
-                    if (id === 'name_981236568851782220940') isRequired(e.target.value.trim(), '#e_n_981236568851782220940');
-                    if (id === 'email_981236568851782220940') isEmailValid(e.target.value.trim(), '#e_m_981236568851782220940');
-                    if (id === 'phone_981236568851782220940') isRequired(e.target.value.trim(), '#e_f_981236568851782220940');
-                    if (id === 'approval_981236568851782220940') isChecked(e.target);
-                  }));
-
-                  document.querySelectorAll('#s_f_981236568851782220940 input[type=text]').forEach(function(inp) {
-                    inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); validateForm(); } });
-                  });
-                })();
-              ` }} />
             </div>
           </div>
         </div>
