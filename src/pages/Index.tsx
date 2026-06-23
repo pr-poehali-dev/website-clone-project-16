@@ -258,11 +258,11 @@ export default function Index() {
 
       {/* ПК: блок подарков (после стрелки) */}
       <section className="hidden md:block max-w-[1200px] mx-auto px-8 pb-10">
-        <div className="border-2 border-[#1F5B4E] rounded-3xl p-8 grid grid-cols-2 gap-6 items-center" style={{ maxWidth: '60%' }}>
+        <div className="border-2 border-[#1F5B4E] rounded-3xl p-8 grid grid-cols-2 gap-6 items-center mx-auto" style={{ maxWidth: '75%' }}>
           <div>
             <p className="font-bold text-[#1F5B4E] text-lg mb-3">Подарки при регистрации:</p>
-            <p className="text-base text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
-            <p className="text-base text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
+            <p className="text-base text-[#1F5B4E] whitespace-nowrap">«Памятка новичка по работе с лозой»</p>
+            <p className="text-base text-[#1F5B4E] whitespace-nowrap">«Подборка готовых решений из лозы»</p>
           </div>
           <div className="flex justify-end">
             <img src={IMG_GIFT} alt="Подарки" className="w-72 object-contain" style={{ background: 'none' }} />
