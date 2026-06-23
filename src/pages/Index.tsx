@@ -348,26 +348,62 @@ export default function Index() {
       </section>
 
       {/* ===== КАК ПРОХОДИТ ОБУЧЕНИЕ ===== */}
-      <section className="max-w-[1200px] mx-auto px-4 pb-12 md:pb-20">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-10">
+      <section className="min-h-screen hidden md:flex flex-col justify-center px-12 py-16 max-w-[1400px] mx-auto w-full">
+        <h2 className="text-5xl font-black text-center mb-16">
           <span className="text-[#1F5B4E]">КАК ПРОХОДИТ </span>
           <span className="text-[#F2C12E]">ОБУЧЕНИЕ?</span>
         </h2>
 
-        {/* ПК: горизонтально со смещением */}
-        <div className="hidden md:grid grid-cols-4 gap-8 items-start">
-          {STEPS.map((step, i) => (
-            <div key={i} className={i % 2 === 1 ? 'mt-14' : ''}>
-              <div className="w-20 h-20 rounded-full bg-[#F7EFE2] flex items-center justify-center font-extrabold text-[#1F5B4E] text-sm mb-4 border border-[#E8D9B8]">
-                {step.n}
+        {/* ПК: шаги снизу-вверх слева-направо */}
+        <div className="relative flex items-end justify-between gap-4 mb-16" style={{ minHeight: 380 }}>
+          {STEPS.map((step, i) => {
+            const bottomOffsets = ['0px', '90px', '180px', '270px'];
+            return (
+              <div key={i} className="relative flex flex-col items-start" style={{ width: '22%', marginBottom: bottomOffsets[i] }}>
+                {/* Стрелка вправо-вниз к следующему шагу */}
+                {i < STEPS.length - 1 && (
+                  <svg
+                    className="absolute"
+                    style={{ left: '90px', top: '40px', width: 160, height: 80, overflow: 'visible' }}
+                    viewBox="0 0 160 80"
+                    fill="none"
+                  >
+                    <path
+                      d="M 0 0 C 40 -10 120 70 160 80"
+                      stroke="#1F5B4E"
+                      strokeWidth="1.8"
+                      strokeDasharray="5 4"
+                      fill="none"
+                    />
+                    <polygon points="152,68 165,82 155,86" fill="#1F5B4E" />
+                  </svg>
+                )}
+                <div className="w-24 h-24 rounded-full bg-[#F7EFE2] flex items-center justify-center font-extrabold text-[#1F5B4E] text-sm border border-[#E8D9B8] mb-5 shrink-0">
+                  {step.n}
+                </div>
+                <p className="text-base text-[#1F5B4E] leading-snug">{step.text}</p>
               </div>
-              <p className="text-sm md:text-base text-[#1F5B4E] leading-snug">{step.text}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Мобиль: вертикально с пунктирными стрелками */}
-        <div className="md:hidden">
+        <div className="flex justify-center">
+          <button
+            onClick={scrollToForm}
+            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-16 py-4 rounded-xl shadow-md"
+          >
+            ХОЧУ НА КУРС
+          </button>
+        </div>
+      </section>
+
+      {/* Мобиль: вертикально с пунктирными стрелками */}
+      <section className="md:hidden px-4 pb-12">
+        <h2 className="text-3xl font-black text-center mb-8">
+          <span className="text-[#1F5B4E]">КАК ПРОХОДИТ </span>
+          <span className="text-[#F2C12E]">ОБУЧЕНИЕ?</span>
+        </h2>
+        <div>
           {STEPS.map((step, i) => (
             <div key={i} className="flex gap-4">
               <div className="flex flex-col items-center w-16 shrink-0">
@@ -387,11 +423,10 @@ export default function Index() {
             </div>
           ))}
         </div>
-
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-8">
           <button
             onClick={scrollToForm}
-            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-16 py-4 rounded-xl shadow-md w-full md:w-auto"
+            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-16 py-4 rounded-xl shadow-md w-full"
           >
             ХОЧУ НА КУРС
           </button>
