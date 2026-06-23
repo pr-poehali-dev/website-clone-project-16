@@ -145,8 +145,8 @@ export default function Index() {
                 </p>
               </div>
               <div className="mt-5">
-                <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
-                <ul className="space-y-1.5 text-sm">
+                <p className="font-bold text-lg mb-3">Зарегистрируйтесь и получите:</p>
+                <ul className="space-y-1.5 text-base">
                   {['4 подробных онлайн-урока по плетению из бумажной лозы','30 дней доступа к курсу','Уроки придут вам в личные сообщения'].map((t, i) => (
                     <li key={i} className="flex gap-2 items-start"><span className="shrink-0 mt-0.5">•</span><span>{t}</span></li>
                   ))}
