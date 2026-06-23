@@ -118,13 +118,14 @@ export default function Index() {
 
           {/* Заголовок + «из бумаги» */}
           <div className="w-full">
-            <svg width="100%" viewBox="0 0 1000 110" className="overflow-visible">
+            <svg width="100%" viewBox="0 0 1000 80" style={{ display: 'block', overflow: 'visible' }}>
               <text
-                x="0" y="95"
+                x="0" y="72"
                 textLength="1000"
-                lengthAdjust="spacingAndGlyphs"
+                lengthAdjust="spacing"
                 fontFamily="inherit"
                 fontWeight="900"
+                fontSize="72"
                 fill="#F2C12E"
               >
                 С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
