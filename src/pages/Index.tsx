@@ -118,24 +118,17 @@ export default function Index() {
 
           {/* Заголовок + «из бумаги» */}
           <div className="w-full">
-            <svg width="100%" viewBox="0 0 1000 55" style={{ display: 'block', overflow: 'visible' }}>
-              <text
-                x="0" y="50"
-                textLength="1000"
-                lengthAdjust="spacing"
-                fontFamily="inherit"
-                fontWeight="900"
-                fontSize="48"
-                fill="#F2C12E"
-              >
-                С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
-              </text>
-            </svg>
-            {/* «из бумаги» — правее центра, наезжает на фото */}
-            <div className="flex justify-end -mt-2 relative z-10">
+            <h1
+              className="font-normal text-[#F2C12E] whitespace-nowrap leading-tight"
+              style={{ fontSize: 'min(4.8vw, 4rem)' }}
+            >
+              С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
+            </h1>
+            {/* «из бумаги» — под буквой Я, слева */}
+            <div className="flex justify-start -mt-2 relative z-10">
               <span
                 className="font-hand text-[#1F5B4E]"
-                style={{ fontSize: 'min(5.7vw, 4.8rem)', display: 'inline-block', transform: 'rotate(-25deg)', transformOrigin: 'right center' }}
+                style={{ fontSize: 'min(5.7vw, 4.8rem)', display: 'inline-block', transform: 'rotate(-25deg)', transformOrigin: 'left center', marginLeft: '72%' }}
               >
                 из бумаги
               </span>
