@@ -67,97 +67,129 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-white font-sans text-[#1F5B4E] overflow-x-hidden pb-10 md:pb-0">
 
-      {/* ===== HERO ===== */}
-      <section className="max-w-[1200px] mx-auto px-4 pt-8 md:pt-14 pb-6 md:pb-10">
-        <p className="font-bold tracking-widest text-[#1F5B4E] text-sm text-center md:text-left mb-3">БЕСПЛАТНЫЙ КУРС</p>
+      {/* ===== HERO (мобиль) ===== */}
+      <section className="md:hidden max-w-[1200px] mx-auto px-4 pt-8 pb-6">
+        <p className="font-bold tracking-widest text-[#1F5B4E] text-sm text-center mb-3">БЕСПЛАТНЫЙ КУРС</p>
+        <h1 className="text-4xl font-black leading-[1.1] text-center">
+          <span className="text-[#F2C12E]">С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ</span>
+          <span className="block font-hand text-[#1F5B4E] text-5xl -mt-1 text-center">из бумаги</span>
+        </h1>
+        <div className="mt-5 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
+          <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
+            ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
+          </p>
+        </div>
+        <div className="mt-6">
+          <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
+          <ul className="space-y-1.5 text-sm">
+            {['4 подробных онлайн-урока по плетению из бумажной лозы','30 дней доступа к курсу','Уроки придут вам в личные сообщения'].map((t, i) => (
+              <li key={i} className="flex gap-2 items-start"><span className="shrink-0 mt-0.5">•</span><span>{t}</span></li>
+            ))}
+          </ul>
+        </div>
+        <button onClick={scrollToForm} className="mt-6 w-full bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-8 rounded-xl shadow-md">
+          ПОЛУЧИТЬ УРОКИ
+        </button>
+        <div className="mt-7">
+          <p className="font-bold tracking-widest text-[#1F5B4E] text-xs text-center mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
+          <div className="flex items-center gap-1 justify-center">
+            <TimerDigit value={h[0]} /><TimerDigit value={h[1]} /><TimerColon />
+            <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
+            <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
+          </div>
+        </div>
+        <div className="mt-6">
+          <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-lg" />
+        </div>
+        <div className="mt-6 border-2 border-[#1F5B4E] rounded-2xl p-5 flex gap-4 items-center">
+          <div className="flex-1">
+            <p className="font-bold text-[#1F5B4E] text-sm mb-1">Подарки при регистрации:</p>
+            <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
+            <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
+          </div>
+          <img src={IMG_GIFT} alt="Подарки" className="w-20 h-20 rounded-xl object-cover shrink-0" />
+        </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Левая колонка */}
-          <div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] text-center md:text-left">
+      {/* ===== HERO (ПК) ===== */}
+      <section className="hidden md:block pt-10 pb-0 overflow-visible">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-2">БЕСПЛАТНЫЙ КУРС</p>
+        </div>
+
+        {/* Заголовок + фото: заголовок на всю ширину, фото абсолютно справа */}
+        <div className="relative">
+          <div className="max-w-[1200px] mx-auto px-8">
+            {/* Заголовок на всю строку */}
+            <h1 className="text-[clamp(3rem,6vw,6rem)] font-black leading-[1.0] whitespace-nowrap">
               <span className="text-[#F2C12E]">С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ</span>
-              <span className="block font-hand text-[#1F5B4E] text-5xl md:text-6xl -mt-1 text-center md:text-left">из бумаги</span>
             </h1>
-
-            <div className="mt-5 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
-              <p className="font-bold text-[#1F5B4E] text-sm md:text-base leading-snug">
-                ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
-              </p>
-            </div>
-
-            <div className="mt-6">
-              <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
-              <ul className="space-y-1.5 text-sm md:text-base">
-                {[
-                  '4 подробных онлайн-урока по плетению из бумажной лозы',
-                  '30 дней доступа к курсу',
-                  'Уроки придут вам в личные сообщения',
-                ].map((t, i) => (
-                  <li key={i} className="flex gap-2 items-start">
-                    <span className="shrink-0 mt-0.5">•</span>
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <button
-              onClick={scrollToForm}
-              className="mt-6 w-full bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-8 rounded-xl shadow-md"
-            >
-              ПОЛУЧИТЬ УРОКИ
-            </button>
-
-            {/* Таймер */}
-            <div className="mt-7">
-              <p className="font-bold tracking-widest text-[#1F5B4E] text-xs md:text-sm text-center md:text-left mb-3">
-                БОНУСЫ СГОРЯТ ЧЕРЕЗ:
-              </p>
-              <div className="flex items-center gap-1 justify-center md:justify-start">
-                <TimerDigit value={h[0]} />
-                <TimerDigit value={h[1]} />
-                <TimerColon />
-                <TimerDigit value={m[0]} />
-                <TimerDigit value={m[1]} />
-                <TimerColon />
-                <TimerDigit value={s[0]} />
-                <TimerDigit value={s[1]} />
-              </div>
-            </div>
-
-            {/* Мобиль: фото под таймером */}
-            <div className="mt-6 md:hidden">
-              <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-lg" />
-            </div>
-
-            {/* Мобиль: подарки */}
-            <div className="mt-6 md:hidden border-2 border-[#1F5B4E] rounded-2xl p-5 flex gap-4 items-center">
-              <div className="flex-1">
-                <p className="font-bold text-[#1F5B4E] text-sm mb-1">Подарки при регистрации:</p>
-                <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
-                <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
-              </div>
-              <img src={IMG_GIFT} alt="Подарки" className="w-20 h-20 rounded-xl object-cover shrink-0" />
-            </div>
           </div>
 
-          {/* ПК: фото справа */}
-          <div className="hidden md:block">
-            <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-xl" />
+          {/* Фото — абсолютно справа, перекрывает часть заголовка */}
+          <div className="absolute top-0 right-0 w-[48%] h-full min-h-[380px]">
+            <img
+              src={IMG_HERO}
+              alt="Изделия из бумажной лозы"
+              className="w-full h-full object-cover rounded-bl-3xl"
+              style={{ minHeight: 380 }}
+            />
+          </div>
+
+          {/* «из бумаги» — под заголовком, сдвинуто вправо, наезжает на фото */}
+          <div className="max-w-[1200px] mx-auto px-8 relative z-10">
+            <span className="font-hand text-[#1F5B4E] text-[clamp(2.5rem,5vw,5rem)] leading-none ml-[42%] block -mt-2">
+              из бумаги
+            </span>
+          </div>
+
+          {/* Контентная часть — под заголовком, левая половина */}
+          <div className="max-w-[1200px] mx-auto px-8 mt-6 pb-10">
+            <div className="w-[48%]">
+              <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 inline-block">
+                <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
+                  ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ<br />ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
+                </p>
+              </div>
+              <div className="mt-5">
+                <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
+                <ul className="space-y-1.5 text-base">
+                  {['4 подробных онлайн-урока по плетению из бумажной лозы','30 дней доступа к курсу','Уроки придут вам в личные сообщения'].map((t, i) => (
+                    <li key={i} className="flex gap-2 items-start"><span className="shrink-0 mt-0.5">•</span><span>{t}</span></li>
+                  ))}
+                </ul>
+              </div>
+              <button onClick={scrollToForm} className="mt-6 bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-10 rounded-xl shadow-md">
+                ПОЛУЧИТЬ УРОКИ
+              </button>
+              <div className="mt-7">
+                <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
+                <div className="flex items-center gap-1">
+                  <TimerDigit value={h[0]} /><TimerDigit value={h[1]} /><TimerColon />
+                  <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
+                  <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
+                  {/* Стрелка к блоку подарков */}
+                  <svg className="ml-4 mt-2" width="90" height="70" viewBox="0 0 90 70" fill="none">
+                    <path d="M 10 5 Q 20 5 30 20 Q 50 50 70 65" stroke="#1F5B4E" strokeWidth="2" strokeDasharray="5 4" fill="none"/>
+                    <polygon points="62,68 72,68 67,60" fill="#1F5B4E"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ПК: блок подарков */}
-      <section className="hidden md:block max-w-[1200px] mx-auto px-4 pb-10">
-        <div className="border-2 border-[#1F5B4E] rounded-3xl p-8 md:p-10 grid md:grid-cols-2 gap-6 items-center">
+      {/* ПК: блок подарков (после стрелки) */}
+      <section className="hidden md:block max-w-[1200px] mx-auto px-8 pb-10">
+        <div className="border-2 border-[#1F5B4E] rounded-3xl p-8 grid grid-cols-2 gap-6 items-center">
           <div>
-            <p className="font-bold text-[#1F5B4E] text-lg md:text-xl mb-3">Подарки при регистрации:</p>
-            <p className="text-base md:text-lg text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
-            <p className="text-base md:text-lg text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
+            <p className="font-bold text-[#1F5B4E] text-lg mb-3">Подарки при регистрации:</p>
+            <p className="text-base text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
+            <p className="text-base text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
           </div>
           <div className="flex justify-end">
-            <img src={IMG_GIFT} alt="Подарки" className="rounded-2xl w-56 object-cover shadow" />
+            <img src={IMG_GIFT} alt="Подарки" className="rounded-2xl w-64 object-cover shadow" />
           </div>
         </div>
       </section>
