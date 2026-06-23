@@ -112,9 +112,9 @@ export default function Index() {
       </section>
 
       {/* ===== HERO (ПК) ===== */}
-      <section className="hidden md:block pt-10 pb-0">
+      <section className="hidden md:block pt-20 pb-0">
         <div className="max-w-[1200px] mx-auto px-8">
-          <p className="font-bold tracking-widest text-[#1F5B4E] text-[1.1rem] mb-2">БЕСПЛАТНЫЙ КУРС</p>
+          <p className="font-bold tracking-widest text-[#1F5B4E] text-[1.1rem] mb-1">БЕСПЛАТНЫЙ КУРС</p>
 
           {/* Заголовок + «из бумаги» */}
           <div className="w-full">
