@@ -117,10 +117,10 @@ export default function Index() {
           <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-2">БЕСПЛАТНЫЙ КУРС</p>
 
           {/* Заголовок + «из бумаги» — относительный блок */}
-          <div className="relative">
+          <div className="relative" style={{ containerType: 'inline-size' }}>
             <h1
-              className="font-black leading-[1.05] whitespace-nowrap text-[#F2C12E]"
-              style={{ fontSize: 'min(6.8vw, 5.8rem)' }}
+              className="font-black leading-[1.05] text-[#F2C12E]"
+              style={{ fontSize: 'clamp(2rem, 14cqi, 5.8rem)' }}
             >
               С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
             </h1>
