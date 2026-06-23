@@ -169,12 +169,12 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Фото — поднято вверх до уровня рамки "ПОШАГОВЫЙ РАЗБОР" */}
-            <div className="flex-1 flex items-end" style={{ marginTop: '-14rem' }}>
+            {/* Фото — абсолютно позиционировано, верх у рамки ПОШАГОВЫЙ РАЗБОР, низ у таймера */}
+            <div className="flex-1" style={{ alignSelf: 'stretch', position: 'relative' }}>
               <img
                 src={IMG_HERO}
                 alt="Изделия из бумажной лозы"
-                className="w-full object-cover object-top rounded-3xl shadow-xl"
+                className="w-full object-cover object-top rounded-3xl shadow-xl absolute inset-0 h-full"
               />
             </div>
           </div>
