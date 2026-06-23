@@ -122,7 +122,7 @@ export default function Index() {
               <text
                 x="0" y="50"
                 textLength="1000"
-                lengthAdjust="spacing"
+                lengthAdjust="spacingAndGlyphs" letterSpacing="-2"
                 fontFamily="inherit"
                 fontWeight="900"
                 fontSize="48"
