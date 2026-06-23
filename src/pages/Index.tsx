@@ -1,195 +1,366 @@
+import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 
-const HERO_IMG = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/90345cbd-d76d-40e2-8d3b-836c496e2899.jpg';
-const GIFT_IMG = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/90345cbd-d76d-40e2-8d3b-836c496e2899.jpg';
-const PROG_IMG_1 = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/90345cbd-d76d-40e2-8d3b-836c496e2899.jpg';
-const PROG_IMG_2 = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/90345cbd-d76d-40e2-8d3b-836c496e2899.jpg';
-const PROG_IMG_3 = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/90345cbd-d76d-40e2-8d3b-836c496e2899.jpg';
+const IMG_HERO = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/90345cbd-d76d-40e2-8d3b-836c496e2899.jpg';
+const IMG_HEARTS = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/77cfa586-bde6-4e24-8df5-23f75f88efac.jpg';
+const IMG_GIFT = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/77cfa586-bde6-4e24-8df5-23f75f88efac.jpg';
 
 const scrollToForm = () => {
   document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
 };
 
+function useTimer() {
+  const getSecondsLeft = () => {
+    const now = new Date();
+    const end = new Date();
+    end.setHours(23, 59, 59, 0);
+    return Math.max(0, Math.floor((end.getTime() - now.getTime()) / 1000));
+  };
+  const [secs, setSecs] = useState(getSecondsLeft);
+  useEffect(() => {
+    const id = setInterval(() => setSecs(getSecondsLeft()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const h = String(Math.floor(secs / 3600)).padStart(2, '0');
+  const m = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+  const s = String(secs % 60).padStart(2, '0');
+  return { h, m, s };
+}
+
 const TimerDigit = ({ value }: { value: string }) => (
-  <div className="w-12 h-16 md:w-14 md:h-20 bg-eco-cream rounded-xl flex items-center justify-center text-3xl md:text-4xl font-extrabold text-eco-green-dark border border-eco-yellow/30">
+  <div className="w-11 h-14 md:w-14 md:h-[72px] bg-[#F5EDD9] rounded-xl border border-[#E8D9B8] flex items-center justify-center text-2xl md:text-4xl font-black text-[#1F5B4E]">
     {value}
   </div>
 );
 
-const ifCards = [
-  { strong: 'Устали от рутины', text: 'и хочется внести в жизнь разнообразия', boldFirst: true },
-  { strong: 'наедине с собой', text: 'Хотите провести время', boldFirst: false, prefix: 'Хотите провести время' },
+const TimerColon = () => (
+  <span className="text-2xl md:text-3xl font-black text-[#1F5B4E] pb-1">:</span>
+);
+
+const IF_CARDS = [
+  <><b>Устали от рутины</b> и хочется внести в жизнь разнообразия</>,
+  <>Хотите провести время <b>наедине с собой</b></>,
+  <>Хотите <b>сделать стильные изделия</b> для своего дома</>,
+  <>Ищете хобби, которое поможет <b>отдохнуть от повседневной суеты</b></>,
+  <>Любите рукоделие и хочется <b>освоить новое ремесло</b></>,
+  <>Хотите найти дело, которое будет приносить <b>стабильный доход</b></>,
+  <>Никогда не плели, но <b>хотите научиться</b></>,
 ];
 
-const Index = () => {
+const CHECKLIST = [
+  'Узнаете как из простой бумаги изготавливать бумажную лозу',
+  'Узнаете, какие изделия можно плести и насколько они прочные',
+  'Какие материалы необходимы для плетения и сколько это стоит',
+  'Скрутите свои первые бумажные трубочки и поймете, как это просто',
+];
+
+const STEPS = [
+  { n: 'ШАГ 1', text: 'При регистрации вы выбираете удобный для вас мессенджер (Вконтакте или Телеграм)' },
+  { n: 'ШАГ 2', text: 'После завершения регистрации в выбранный мессенджер придет приветственное сообщение. Иногда может быть задержка до 5 минут, не переживайте' },
+  { n: 'ШАГ 3', text: 'После приветственного сообщения туда же вам будут приходить уроки и все инструкции, внимательно читайте все письма, чтобы не упустить важную информацию' },
+  { n: 'ШАГ 4', text: <span>Вы скрутите свою первую лозу и изготовите первое изделие. <b>Поздравляю!</b></span> },
+];
+
+export default function Index() {
+  const { h, m, s } = useTimer();
+
   return (
-    <div className="min-h-screen bg-white font-sans text-eco-green-dark overflow-x-hidden">
-      {/* HERO */}
-      <section className="container py-10 md:py-16">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="animate-fade-in">
-            <p className="font-bold tracking-widest text-eco-green text-sm md:text-base mb-4">
-              БЕСПЛАТНЫЙ КУРС
-            </p>
-            <h1 className="text-4xl md:text-6xl font-black leading-tight">
-              <span className="text-eco-yellow">С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ</span>
-              <span className="block font-hand text-eco-green text-5xl md:text-7xl -mt-1">из бумаги</span>
+    <div className="min-h-screen bg-white font-sans text-[#1F5B4E] overflow-x-hidden pb-10 md:pb-0">
+
+      {/* ===== HERO ===== */}
+      <section className="max-w-[1200px] mx-auto px-4 pt-8 md:pt-14 pb-6 md:pb-10">
+        <p className="font-bold tracking-widest text-[#1F5B4E] text-sm text-center md:text-left mb-3">БЕСПЛАТНЫЙ КУРС</p>
+
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+          {/* Левая колонка */}
+          <div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] text-center md:text-left">
+              <span className="text-[#F2C12E]">С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ</span>
+              <span className="block font-hand text-[#1F5B4E] text-5xl md:text-6xl -mt-1 text-center md:text-left">из бумаги</span>
             </h1>
 
-            <div className="mt-6 border-2 border-eco-green rounded-2xl px-6 py-4 inline-block">
-              <p className="font-bold text-eco-green-dark text-sm md:text-lg leading-snug">
-                ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ<br className="hidden md:block" /> ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
+            <div className="mt-5 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
+              <p className="font-bold text-[#1F5B4E] text-sm md:text-base leading-snug">
+                ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
               </p>
             </div>
 
-            <div className="mt-7">
-              <p className="font-bold text-lg mb-3">Зарегистрируйтесь и получите:</p>
-              <ul className="space-y-2 text-base md:text-lg">
-                <li className="flex gap-2"><span className="text-eco-green">•</span> 4 подробных онлайн-урока по плетению из бумажной лозы</li>
-                <li className="flex gap-2"><span className="text-eco-green">•</span> 30 дней доступа к курсу</li>
-                <li className="flex gap-2"><span className="text-eco-green">•</span> Уроки придут вам в личные сообщения</li>
+            <div className="mt-6">
+              <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
+              <ul className="space-y-1.5 text-sm md:text-base">
+                {[
+                  '4 подробных онлайн-урока по плетению из бумажной лозы',
+                  '30 дней доступа к курсу',
+                  'Уроки придут вам в личные сообщения',
+                ].map((t, i) => (
+                  <li key={i} className="flex gap-2 items-start">
+                    <span className="shrink-0 mt-0.5">•</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <button onClick={scrollToForm} className="mt-7 bg-eco-red hover:bg-eco-red/90 transition text-white font-bold text-lg px-10 py-4 rounded-xl shadow-lg w-full md:w-auto">
+            <button
+              onClick={scrollToForm}
+              className="mt-6 w-full bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-8 rounded-xl shadow-md"
+            >
               ПОЛУЧИТЬ УРОКИ
             </button>
 
-            <div className="mt-8">
-              <p className="font-bold tracking-wider text-eco-green text-sm mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
-              <div className="flex gap-2">
-                <TimerDigit value="0" />
-                <TimerDigit value="0" />
-                <TimerDigit value="0" />
-                <TimerDigit value="0" />
+            {/* Таймер */}
+            <div className="mt-7">
+              <p className="font-bold tracking-widest text-[#1F5B4E] text-xs md:text-sm text-center md:text-left mb-3">
+                БОНУСЫ СГОРЯТ ЧЕРЕЗ:
+              </p>
+              <div className="flex items-center gap-1 justify-center md:justify-start">
+                <TimerDigit value={h[0]} />
+                <TimerDigit value={h[1]} />
+                <TimerColon />
+                <TimerDigit value={m[0]} />
+                <TimerDigit value={m[1]} />
+                <TimerColon />
+                <TimerDigit value={s[0]} />
+                <TimerDigit value={s[1]} />
               </div>
+            </div>
+
+            {/* Мобиль: фото под таймером */}
+            <div className="mt-6 md:hidden">
+              <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-lg" />
+            </div>
+
+            {/* Мобиль: подарки */}
+            <div className="mt-6 md:hidden border-2 border-[#1F5B4E] rounded-2xl p-5 flex gap-4 items-center">
+              <div className="flex-1">
+                <p className="font-bold text-[#1F5B4E] text-sm mb-1">Подарки при регистрации:</p>
+                <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
+                <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
+              </div>
+              <img src={IMG_GIFT} alt="Подарки" className="w-20 h-20 rounded-xl object-cover shrink-0" />
             </div>
           </div>
 
-          <div className="animate-fade-in">
-            <img src={HERO_IMG} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-xl" />
+          {/* ПК: фото справа */}
+          <div className="hidden md:block">
+            <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-xl" />
           </div>
         </div>
       </section>
 
-      {/* GIFTS */}
-      <section className="container pb-12 md:pb-20">
-        <div className="border-2 border-eco-green rounded-3xl p-6 md:p-10 grid md:grid-cols-2 gap-6 items-center">
+      {/* ПК: блок подарков */}
+      <section className="hidden md:block max-w-[1200px] mx-auto px-4 pb-10">
+        <div className="border-2 border-[#1F5B4E] rounded-3xl p-8 md:p-10 grid md:grid-cols-2 gap-6 items-center">
           <div>
-            <p className="font-bold text-eco-green text-lg md:text-xl mb-3">Подарки при регистрации:</p>
-            <p className="text-eco-green text-base md:text-lg">«Памятка новичка по работе с лозой»</p>
-            <p className="text-eco-green text-base md:text-lg">«Подборка готовых решений из лозы»</p>
+            <p className="font-bold text-[#1F5B4E] text-lg md:text-xl mb-3">Подарки при регистрации:</p>
+            <p className="text-base md:text-lg text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
+            <p className="text-base md:text-lg text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
           </div>
-          <div className="flex justify-center md:justify-end">
-            <img src={GIFT_IMG} alt="Подарки" className="rounded-2xl w-48 md:w-64 object-cover" />
+          <div className="flex justify-end">
+            <img src={IMG_GIFT} alt="Подарки" className="rounded-2xl w-56 object-cover shadow" />
           </div>
         </div>
       </section>
 
-      {/* COURSE FOR YOU */}
-      <section className="container pb-12 md:pb-20">
-        <h2 className="text-3xl md:text-5xl font-black text-center text-eco-green mb-10">
-          КУРС ДЛЯ ВАС <span className="text-eco-yellow">ЕСЛИ:</span>
+      {/* ===== КУРС ДЛЯ ВАС ЕСЛИ ===== */}
+      <section className="max-w-[1200px] mx-auto px-4 pb-12 md:pb-20">
+        <h2 className="text-3xl md:text-5xl font-black text-center mb-8">
+          <span className="text-[#1F5B4E]">КУРС ДЛЯ ВАС </span>
+          <span className="text-[#F2C12E]">ЕСЛИ:</span>
         </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {[
-            <><b>Устали от рутины</b> и хочется внести в жизнь разнообразия</>,
-            <>Хотите провести время <b>наедине с собой</b></>,
-            <>Хотите <b>сделать стильные изделия</b> для своего дома</>,
-            <>Ищете хобби, которое поможет <b>отдохнуть от повседневной суеты</b></>,
-            <>Любите рукоделие и хочется <b>освоить новое ремесло</b></>,
-            <>Хотите найти дело, которое будет приносить <b>стабильный доход</b></>,
-            <>Никогда не плели, но <b>хотите научиться</b></>,
-          ].map((t, i) => (
-            <div key={i} className="bg-eco-cream rounded-2xl p-6 flex items-center justify-center text-center text-eco-green-dark min-h-[140px]">
-              <p className="text-base md:text-lg leading-snug">{t}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {IF_CARDS.map((t, i) => (
+            <div key={i} className="bg-[#F7EFE2] rounded-2xl p-6 flex items-center justify-center text-center text-[#1F5B4E] min-h-[130px]">
+              <p className="text-sm md:text-base leading-snug">{t}</p>
             </div>
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <button onClick={scrollToForm} className="bg-eco-green hover:bg-eco-green-dark transition text-white font-bold text-lg px-16 py-4 rounded-xl shadow-lg">
+          <button
+            onClick={scrollToForm}
+            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-16 py-4 rounded-xl shadow-md w-full md:w-auto"
+          >
             ХОЧУ НА КУРС
           </button>
         </div>
       </section>
 
-      {/* PROGRAM */}
-      <section className="container pb-12 md:pb-20">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-2">
-          <span className="text-eco-yellow">ПРОГРАММА</span> <span className="text-eco-green">КУРСА</span>
+      {/* ===== ПРОГРАММА КУРСА ===== */}
+      <section className="max-w-[1200px] mx-auto px-4 pb-12 md:pb-20">
+        <h2 className="text-3xl md:text-5xl font-black text-center mb-1">
+          <span className="text-[#F2C12E]">ПРОГРАММА</span>{' '}
+          <span className="text-[#1F5B4E]">КУРСА</span>
         </h2>
-        <p className="text-center text-eco-green text-xl md:text-2xl font-bold mb-10">Вас ждет 4 урока, на которых вы:</p>
+        <p className="text-center font-bold text-[#1F5B4E] text-base md:text-xl mb-8">
+          Вас ждет 4 урока, на которых вы:
+        </p>
 
         <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div className="relative h-[420px] hidden md:block">
-            <img src={PROG_IMG_1} className="absolute top-0 left-12 w-40 h-40 rounded-full object-cover shadow-lg" alt="" />
-            <img src={PROG_IMG_2} className="absolute top-10 right-0 w-64 h-64 rounded-full object-cover shadow-lg" alt="" />
-            <img src={PROG_IMG_3} className="absolute bottom-0 left-0 w-72 h-72 rounded-full object-cover shadow-lg" alt="" />
+          {/* Мобиль: два круга */}
+          <div className="grid grid-cols-2 gap-4 md:hidden">
+            <img src={IMG_HERO} className="rounded-full aspect-square object-cover w-full shadow-md" alt="" />
+            <img src={IMG_HEARTS} className="rounded-full aspect-square object-cover w-full shadow-md mt-10" alt="" />
+            <img src={IMG_HERO} className="rounded-full aspect-square object-cover w-2/3 mx-auto shadow-md col-span-2" alt="" />
           </div>
-          <div className="md:hidden grid grid-cols-3 gap-3">
-            <img src={PROG_IMG_1} className="rounded-2xl object-cover aspect-square" alt="" />
-            <img src={PROG_IMG_2} className="rounded-2xl object-cover aspect-square" alt="" />
-            <img src={PROG_IMG_3} className="rounded-2xl object-cover aspect-square" alt="" />
+
+          {/* ПК: три позиционированных круга */}
+          <div className="relative h-[400px] hidden md:block">
+            <img src={IMG_HERO} className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_HEARTS} className="absolute top-8 right-0 w-60 h-60 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_HERO} className="absolute bottom-0 left-0 w-64 h-64 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
           </div>
 
           <div>
-            <p className="font-bold text-eco-green-dark mb-5">СПЛЕТЕТЕ ПЕРВОЕ ИЗДЕЛИЕ УЖЕ ЧЕРЕЗ ТРИ ДНЯ</p>
+            <p className="font-bold text-[#1F5B4E] text-sm md:text-base mb-5 uppercase tracking-wide">
+              Сплетете первое изделие уже через три дня
+            </p>
             <ul className="space-y-4">
-              {[
-                'Узнаете как из простой бумаги изготавливать бумажную лозу',
-                'Узнаете, какие изделия можно плести и насколько они прочные',
-                'Какие материалы необходимы для плетения и сколько это стоит',
-                'Скрутите свои первые бумажные трубочки и поймете, как это просто',
-              ].map((t, i) => (
+              {CHECKLIST.map((t, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <span className="shrink-0 w-7 h-7 rounded-md bg-eco-green flex items-center justify-center text-white">
-                    <Icon name="Check" size={16} />
+                  <span className="shrink-0 w-7 h-7 rounded-md bg-[#1F5B4E] flex items-center justify-center text-white mt-0.5">
+                    <Icon name="Check" size={14} />
                   </span>
-                  <span className="text-base md:text-lg">{t}</span>
+                  <span className="text-sm md:text-base text-[#1F5B4E] leading-snug">{t}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-6 bg-eco-cream rounded-2xl p-5 text-eco-green-dark text-base md:text-lg">
+
+            <div className="mt-6 bg-[#F7EFE2] rounded-2xl p-5 text-[#1F5B4E] text-sm md:text-base leading-relaxed">
               Получив базовые знания в плетении, вы изготовите свое первое изделие из бумажной лозы и поймете насколько всё просто
             </div>
-            <button onClick={scrollToForm} className="mt-6 bg-eco-green hover:bg-eco-green-dark transition text-white font-bold text-lg px-12 py-4 rounded-xl shadow-lg w-full md:w-auto">
+
+            <button
+              onClick={scrollToForm}
+              className="mt-6 bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg py-4 rounded-xl shadow-md w-full"
+            >
               ПОЛУЧИТЬ УРОКИ
             </button>
           </div>
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section className="container pb-16 md:pb-24">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-12">
-          <span className="text-eco-green">КАК ПРОХОДИТ</span> <span className="text-eco-yellow">ОБУЧЕНИЕ?</span>
+      {/* ===== КАК ПРОХОДИТ ОБУЧЕНИЕ ===== */}
+      <section className="max-w-[1200px] mx-auto px-4 pb-12 md:pb-20">
+        <h2 className="text-3xl md:text-5xl font-black text-center mb-10">
+          <span className="text-[#1F5B4E]">КАК ПРОХОДИТ </span>
+          <span className="text-[#F2C12E]">ОБУЧЕНИЕ?</span>
         </h2>
-        <div className="grid md:grid-cols-4 gap-8">
-          {[
-            { step: 'ШАГ 1', text: 'При регистрации вы выбираете удобный для вас мессенджер (Вконтакте или Телеграм)' },
-            { step: 'ШАГ 2', text: 'После завершения регистрации в выбранный мессенджер придет приветственное сообщение. Иногда может быть задержка до 5 минут, не переживайте' },
-            { step: 'ШАГ 3', text: 'После приветственного сообщения туда же вам будут приходить уроки и все инструкции, внимательно читайте все письма' },
-            { step: 'ШАГ 4', text: 'Вы скрутите свою первую лозу и изготовите первое изделие' },
-          ].map((s, i) => (
-            <div key={i} className={`${i % 2 === 1 ? 'md:mt-12' : ''}`}>
-              <div className="w-20 h-20 rounded-full bg-eco-cream flex items-center justify-center font-extrabold text-eco-green-dark mb-4">
-                {s.step}
+
+        {/* ПК: горизонтально со смещением */}
+        <div className="hidden md:grid grid-cols-4 gap-8 items-start">
+          {STEPS.map((step, i) => (
+            <div key={i} className={i % 2 === 1 ? 'mt-14' : ''}>
+              <div className="w-20 h-20 rounded-full bg-[#F7EFE2] flex items-center justify-center font-extrabold text-[#1F5B4E] text-sm mb-4 border border-[#E8D9B8]">
+                {step.n}
               </div>
-              <p className="text-base md:text-lg leading-snug">{s.text}</p>
+              <p className="text-sm md:text-base text-[#1F5B4E] leading-snug">{step.text}</p>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* FORM PLACEHOLDER (footer) */}
-      <section id="form" className="bg-eco-green-dark py-16 md:py-24">
-        <div className="container text-center text-eco-cream">
-          <h2 className="text-2xl md:text-4xl font-black mb-4">Форма регистрации</h2>
-          <p className="text-eco-cream/80">Здесь будет форма — вставлю код, который вы пришлёте.</p>
+        {/* Мобиль: вертикально с пунктирными стрелками */}
+        <div className="md:hidden">
+          {STEPS.map((step, i) => (
+            <div key={i} className="flex gap-4">
+              <div className="flex flex-col items-center w-16 shrink-0">
+                <div className="w-16 h-16 rounded-full bg-[#F7EFE2] border border-[#E8D9B8] flex items-center justify-center font-extrabold text-[#1F5B4E] text-xs shrink-0">
+                  {step.n}
+                </div>
+                {i < STEPS.length - 1 && (
+                  <svg width="20" height="72" viewBox="0 0 20 72" fill="none" className="mt-1">
+                    <path d="M10 0 C4 18 16 36 10 54 L10 66" stroke="#1F5B4E" strokeWidth="1.5" strokeDasharray="4 3" fill="none"/>
+                    <polygon points="5,62 10,72 15,62" fill="#1F5B4E"/>
+                  </svg>
+                )}
+              </div>
+              <div className="pt-3 pb-6">
+                <p className="text-sm text-[#1F5B4E] leading-relaxed">{step.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={scrollToForm}
+            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-16 py-4 rounded-xl shadow-md w-full md:w-auto"
+          >
+            ХОЧУ НА КУРС
+          </button>
         </div>
       </section>
+
+      {/* ===== ФОРМА ===== */}
+      <section id="form" className="bg-white pt-4 pb-14">
+        <div className="max-w-[1200px] mx-auto px-4">
+          <p className="text-center text-[#1F5B4E] font-bold tracking-widest text-xs md:text-sm mb-1">
+            ЗАРЕГИСТРИРОВАТЬСЯ НА БЕСПЛАТНЫЙ КУРС
+          </p>
+          <h2 className="text-center text-3xl md:text-5xl font-black mb-8">
+            <span className="text-[#1F5B4E]">С НУЛЯ </span>
+            <span className="text-[#F2C12E]">ДО ПЕРВОГО ИЗДЕЛИЯ</span>
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* Фото слева — только ПК */}
+            <div className="hidden md:block">
+              <img
+                src={IMG_HEARTS}
+                alt="Изделия из бумажной лозы"
+                className="rounded-3xl w-full object-cover shadow-lg"
+                style={{ maxHeight: 520 }}
+              />
+            </div>
+
+            {/* Форма */}
+            <div className="bg-[#F7EFE2] rounded-3xl p-6 md:p-8">
+              <p className="text-center text-[#1F5B4E] text-sm mb-5">Внимательно проверьте данные при вводе!</p>
+
+              <div className="space-y-3">
+                <input
+                  type="text"
+                  placeholder="Введите ваше имя"
+                  className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
+                />
+                <input
+                  type="email"
+                  placeholder="Введите ваш эл. адрес"
+                  className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
+                />
+                <input
+                  type="tel"
+                  placeholder="Введите ваш телефон"
+                  className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
+                />
+                <button className="w-full bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-base py-4 rounded-xl shadow mt-1">
+                  ЗАРЕГИСТРИРОВАТЬСЯ
+                </button>
+              </div>
+
+              <div className="mt-5 flex gap-3 items-start">
+                <input type="checkbox" id="consent" className="mt-0.5 shrink-0 w-4 h-4 accent-[#1F5B4E]" />
+                <label htmlFor="consent" className="text-xs text-[#1F5B4E]/70 italic leading-relaxed cursor-pointer">
+                  <span className="font-semibold not-italic text-[#1F5B4E]">Согласие</span>
+                  <br />
+                  Я согласен на обработку моих персональных данных в соответствии с{' '}
+                  <a href="#" className="underline text-[#1F5B4E]">Политикой конфиденциальности</a>,{' '}
+                  <a href="#" className="underline text-[#1F5B4E]">Договором оферты</a>,{' '}
+                  <a href="#" className="underline text-[#1F5B4E]">Согласием</a> и на получение{' '}
+                  <a href="#" className="underline text-[#1F5B4E]">Информационной рассылки</a>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== НИЖНЯЯ ПЛАШКА (только мобиль) ===== */}
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/90 backdrop-blur-sm border-t border-[#E8D9B8] py-2 text-center z-50">
+        <p className="text-[10px] font-bold tracking-widest text-[#1F5B4E]/60 uppercase">
+          С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
+        </p>
+      </div>
+
     </div>
   );
-};
-
-export default Index;
+}
