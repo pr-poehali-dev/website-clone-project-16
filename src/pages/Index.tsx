@@ -116,20 +116,30 @@ export default function Index() {
         <div className="max-w-[1200px] mx-auto px-8">
           <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-2">БЕСПЛАТНЫЙ КУРС</p>
 
-          {/* Заголовок — на всю ширину */}
-          <h1 className="text-[clamp(3rem,5.8vw,5.8rem)] font-black leading-[1.0] whitespace-nowrap">
-            <span className="text-[#F2C12E]">С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ</span>
-          </h1>
-
-          {/* «из бумаги» — под концом заголовка, наезжает на фото */}
-          <div className="relative z-10 -mt-1">
-            <span className="font-hand text-[#1F5B4E] text-[clamp(2.2rem,4.5vw,4.5rem)] leading-none ml-[44%] block">
+          {/* Заголовок + «из бумаги» — относительный блок */}
+          <div className="relative">
+            <h1
+              className="font-black leading-[1.05] whitespace-nowrap text-[#F2C12E]"
+              style={{ fontSize: 'min(6.8vw, 5.8rem)' }}
+            >
+              С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
+            </h1>
+            {/* «из бумаги» — правый нижний угол заголовка, наезжает на фото */}
+            <span
+              className="font-hand text-[#1F5B4E] absolute z-10"
+              style={{
+                fontSize: 'min(5vw, 4.2rem)',
+                right: '-2%',
+                bottom: '-1.6em',
+                lineHeight: 1,
+              }}
+            >
               из бумаги
             </span>
           </div>
 
           {/* Основной контент + фото в grid */}
-          <div className="grid grid-cols-2 gap-10 mt-4 pb-10 items-end">
+          <div className="grid grid-cols-2 gap-10 mt-10 pb-10 items-end">
             {/* Левая колонка — контент */}
             <div className="flex flex-col">
               <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 inline-block self-start">
