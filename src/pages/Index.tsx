@@ -120,7 +120,7 @@ export default function Index() {
           <div className="relative" style={{ containerType: 'inline-size' }}>
             <h1
               className="font-black leading-[1.05] text-[#F2C12E]"
-              style={{ fontSize: 'clamp(2rem, 14cqi, 5.8rem)' }}
+              style={{ fontSize: 'clamp(2rem, 10.5cqi, 5rem)', whiteSpace: 'nowrap' }}
             >
               С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
             </h1>
