@@ -112,41 +112,27 @@ export default function Index() {
       </section>
 
       {/* ===== HERO (ПК) ===== */}
-      <section className="hidden md:block pt-10 pb-0 overflow-visible">
+      <section className="hidden md:block pt-10 pb-0">
         <div className="max-w-[1200px] mx-auto px-8">
           <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-2">БЕСПЛАТНЫЙ КУРС</p>
-        </div>
 
-        {/* Заголовок + фото: заголовок на всю ширину, фото абсолютно справа */}
-        <div className="relative">
-          <div className="max-w-[1200px] mx-auto px-8">
-            {/* Заголовок на всю строку */}
-            <h1 className="text-[clamp(3rem,6vw,6rem)] font-black leading-[1.0] whitespace-nowrap">
-              <span className="text-[#F2C12E]">С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ</span>
-            </h1>
-          </div>
+          {/* Заголовок — на всю ширину */}
+          <h1 className="text-[clamp(3rem,5.8vw,5.8rem)] font-black leading-[1.0] whitespace-nowrap">
+            <span className="text-[#F2C12E]">С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ</span>
+          </h1>
 
-          {/* Фото — абсолютно справа, перекрывает часть заголовка */}
-          <div className="absolute top-0 right-0 w-[48%] h-full min-h-[380px]">
-            <img
-              src={IMG_HERO}
-              alt="Изделия из бумажной лозы"
-              className="w-full h-full object-cover rounded-bl-3xl"
-              style={{ minHeight: 380 }}
-            />
-          </div>
-
-          {/* «из бумаги» — под заголовком, сдвинуто вправо, наезжает на фото */}
-          <div className="max-w-[1200px] mx-auto px-8 relative z-10">
-            <span className="font-hand text-[#1F5B4E] text-[clamp(2.5rem,5vw,5rem)] leading-none ml-[42%] block -mt-2">
+          {/* «из бумаги» — под концом заголовка, наезжает на фото */}
+          <div className="relative z-10 -mt-1">
+            <span className="font-hand text-[#1F5B4E] text-[clamp(2.2rem,4.5vw,4.5rem)] leading-none ml-[44%] block">
               из бумаги
             </span>
           </div>
 
-          {/* Контентная часть — под заголовком, левая половина */}
-          <div className="max-w-[1200px] mx-auto px-8 mt-6 pb-10">
-            <div className="w-[48%]">
-              <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 inline-block">
+          {/* Основной контент + фото в grid */}
+          <div className="grid grid-cols-2 gap-10 mt-4 pb-10">
+            {/* Левая колонка — контент */}
+            <div className="flex flex-col">
+              <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 inline-block self-start">
                 <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
                   ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ<br />ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
                 </p>
@@ -159,7 +145,7 @@ export default function Index() {
                   ))}
                 </ul>
               </div>
-              <button onClick={scrollToForm} className="mt-6 bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-10 rounded-xl shadow-md">
+              <button onClick={scrollToForm} className="mt-6 self-start bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-10 rounded-xl shadow-md">
                 ПОЛУЧИТЬ УРОКИ
               </button>
               <div className="mt-7">
@@ -169,12 +155,21 @@ export default function Index() {
                   <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
                   <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
                   {/* Стрелка к блоку подарков */}
-                  <svg className="ml-4 mt-2" width="90" height="70" viewBox="0 0 90 70" fill="none">
-                    <path d="M 10 5 Q 20 5 30 20 Q 50 50 70 65" stroke="#1F5B4E" strokeWidth="2" strokeDasharray="5 4" fill="none"/>
-                    <polygon points="62,68 72,68 67,60" fill="#1F5B4E"/>
+                  <svg className="ml-6 self-end mb-1" width="80" height="64" viewBox="0 0 80 64" fill="none">
+                    <path d="M 8 4 Q 16 4 26 18 Q 44 46 62 60" stroke="#1F5B4E" strokeWidth="2" strokeDasharray="5 4" fill="none"/>
+                    <polygon points="55,62 65,62 60,53" fill="#1F5B4E"/>
                   </svg>
                 </div>
               </div>
+            </div>
+
+            {/* Правая колонка — фото, растянуто от рамки сверху до таймера снизу */}
+            <div className="flex">
+              <img
+                src={IMG_HERO}
+                alt="Изделия из бумажной лозы"
+                className="w-full object-cover rounded-3xl shadow-xl"
+              />
             </div>
           </div>
         </div>
