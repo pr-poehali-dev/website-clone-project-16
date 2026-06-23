@@ -138,7 +138,7 @@ export default function Index() {
           {/* Основной контент + фото */}
           <div className="relative flex gap-10 mt-6 pb-10 items-end">
             {/* Левая колонка — контент, фиксированная ширина чтобы не наезжать на фото */}
-            <div className="flex flex-col w-[38%] shrink-0">
+            <div className="flex flex-col w-[48%] shrink-0">
               <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 self-start">
                 <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
                   ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ<br />ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
