@@ -117,18 +117,24 @@ export default function Index() {
           <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-2">БЕСПЛАТНЫЙ КУРС</p>
 
           {/* Заголовок + «из бумаги» */}
-          <div className="overflow-hidden">
-            <h1
-              className="font-black leading-[1.05] text-[#F2C12E] whitespace-nowrap"
-              style={{ fontSize: 'min(5.8vw, 4.8rem)' }}
-            >
-              С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
-            </h1>
+          <div className="w-full">
+            <svg width="100%" viewBox="0 0 1000 110" className="overflow-visible">
+              <text
+                x="0" y="95"
+                textLength="1000"
+                lengthAdjust="spacingAndGlyphs"
+                fontFamily="inherit"
+                fontWeight="900"
+                fill="#F2C12E"
+              >
+                С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
+              </text>
+            </svg>
             {/* «из бумаги» — правее центра, наезжает на фото */}
-            <div className="flex justify-end pr-[2%]">
+            <div className="flex justify-end -mt-2 relative z-10">
               <span
-                className="font-hand text-[#1F5B4E] -mt-3 relative z-10"
-                style={{ fontSize: 'min(4vw, 3.5rem)' }}
+                className="font-hand text-[#1F5B4E]"
+                style={{ fontSize: 'min(3.8vw, 3.2rem)' }}
               >
                 из бумаги
               </span>
