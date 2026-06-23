@@ -135,18 +135,18 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Основной контент + фото в grid */}
-          <div className="grid grid-cols-2 gap-10 mt-10 pb-10 items-end">
-            {/* Левая колонка — контент */}
-            <div className="flex flex-col">
-              <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 inline-block self-start">
+          {/* Основной контент + фото */}
+          <div className="relative flex gap-10 mt-6 pb-10 items-end">
+            {/* Левая колонка — контент, фиксированная ширина чтобы не наезжать на фото */}
+            <div className="flex flex-col w-[48%] shrink-0">
+              <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 self-start">
                 <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
                   ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ<br />ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
                 </p>
               </div>
               <div className="mt-5">
                 <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
-                <ul className="space-y-1.5 text-base">
+                <ul className="space-y-1.5 text-sm">
                   {['4 подробных онлайн-урока по плетению из бумажной лозы','30 дней доступа к курсу','Уроки придут вам в личные сообщения'].map((t, i) => (
                     <li key={i} className="flex gap-2 items-start"><span className="shrink-0 mt-0.5">•</span><span>{t}</span></li>
                   ))}
@@ -161,7 +161,6 @@ export default function Index() {
                   <TimerDigit value={h[0]} /><TimerDigit value={h[1]} /><TimerColon />
                   <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
                   <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
-                  {/* Стрелка к блоку подарков */}
                   <svg className="ml-6 mb-1" width="80" height="64" viewBox="0 0 80 64" fill="none">
                     <path d="M 8 4 Q 16 4 26 18 Q 44 46 62 60" stroke="#1F5B4E" strokeWidth="2" strokeDasharray="5 4" fill="none"/>
                     <polygon points="55,62 65,62 60,53" fill="#1F5B4E"/>
@@ -170,13 +169,12 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Правая колонка — фото выровнено по нижнему краю таймера */}
-            <div className="flex items-end">
+            {/* Фото — поднято вверх до уровня рамки "ПОШАГОВЫЙ РАЗБОР" */}
+            <div className="flex-1 flex items-end" style={{ marginTop: '-8rem' }}>
               <img
                 src={IMG_HERO}
                 alt="Изделия из бумажной лозы"
                 className="w-full object-cover object-top rounded-3xl shadow-xl"
-                style={{ maxHeight: '420px' }}
               />
             </div>
           </div>
