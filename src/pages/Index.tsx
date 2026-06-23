@@ -265,7 +265,7 @@ export default function Index() {
             <p className="text-base text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
           </div>
           <div className="flex justify-end">
-            <img src={IMG_GIFT} alt="Подарки" className="rounded-2xl w-64 object-cover shadow" />
+            <img src={IMG_GIFT} alt="Подарки" className="w-72 object-contain" style={{ background: 'none' }} />
           </div>
         </div>
       </section>
