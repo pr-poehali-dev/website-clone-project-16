@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 
-const IMG_HERO = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/90345cbd-d76d-40e2-8d3b-836c496e2899.jpg';
+const IMG_HERO = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/ffdb88ef-0aa6-4d05-a587-687a11c8b1c4.png';
 const IMG_HEARTS = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/77cfa586-bde6-4e24-8df5-23f75f88efac.jpg';
 const IMG_GIFT = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/77cfa586-bde6-4e24-8df5-23f75f88efac.jpg';
 
