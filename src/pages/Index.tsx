@@ -170,7 +170,7 @@ export default function Index() {
             </div>
 
             {/* Фото — поднято вверх до уровня рамки "ПОШАГОВЫЙ РАЗБОР" */}
-            <div className="flex-1 flex items-end" style={{ marginTop: '-8rem' }}>
+            <div className="flex-1 flex items-end" style={{ marginTop: '-14rem' }}>
               <img
                 src={IMG_HERO}
                 alt="Изделия из бумажной лозы"
