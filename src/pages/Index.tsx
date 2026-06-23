@@ -129,7 +129,7 @@ export default function Index() {
           </div>
 
           {/* Основной контент + фото в grid */}
-          <div className="grid grid-cols-2 gap-10 mt-4 pb-10">
+          <div className="grid grid-cols-2 gap-10 mt-4 pb-10 items-end">
             {/* Левая колонка — контент */}
             <div className="flex flex-col">
               <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 inline-block self-start">
@@ -155,7 +155,7 @@ export default function Index() {
                   <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
                   <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
                   {/* Стрелка к блоку подарков */}
-                  <svg className="ml-6 self-end mb-1" width="80" height="64" viewBox="0 0 80 64" fill="none">
+                  <svg className="ml-6 mb-1" width="80" height="64" viewBox="0 0 80 64" fill="none">
                     <path d="M 8 4 Q 16 4 26 18 Q 44 46 62 60" stroke="#1F5B4E" strokeWidth="2" strokeDasharray="5 4" fill="none"/>
                     <polygon points="55,62 65,62 60,53" fill="#1F5B4E"/>
                   </svg>
@@ -163,12 +163,13 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Правая колонка — фото, растянуто от рамки сверху до таймера снизу */}
-            <div className="flex">
+            {/* Правая колонка — фото выровнено по нижнему краю таймера */}
+            <div className="flex items-end">
               <img
                 src={IMG_HERO}
                 alt="Изделия из бумажной лозы"
-                className="w-full object-cover rounded-3xl shadow-xl"
+                className="w-full object-cover object-top rounded-3xl shadow-xl"
+                style={{ maxHeight: '420px' }}
               />
             </div>
           </div>
