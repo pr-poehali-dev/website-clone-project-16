@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 
 const IMG_HERO = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/1979deb4-bb35-4e5a-a33e-c152765e175c.jpg';
-const IMG_HEARTS = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/77cfa586-bde6-4e24-8df5-23f75f88efac.jpg';
+const IMG_HEARTS = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/593b5e8e-bf47-478f-9b2e-2fbb3a276b0c.png';
 const IMG_GIFT = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/files/77cfa586-bde6-4e24-8df5-23f75f88efac.jpg';
 
 const scrollToForm = () => {
