@@ -116,35 +116,23 @@ export default function Index() {
         <div className="max-w-[1200px] mx-auto px-8">
           <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-2">БЕСПЛАТНЫЙ КУРС</p>
 
-          {/* Заголовок + «из бумаги» — относительный блок */}
-          <div className="relative">
+          {/* Заголовок + «из бумаги» */}
+          <div className="overflow-hidden">
             <h1
-              className="font-black leading-[1.05] text-[#F2C12E] w-full"
-              style={{
-                fontSize: 'clamp(1.5rem, 7vw, 5rem)',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'clip',
-                transform: 'scaleX(1)',
-                display: 'block',
-                width: '100%',
-                letterSpacing: '-0.02em',
-              }}
+              className="font-black leading-[1.05] text-[#F2C12E] whitespace-nowrap"
+              style={{ fontSize: 'min(5.8vw, 4.8rem)' }}
             >
               С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
             </h1>
-            {/* «из бумаги» — правый нижний угол заголовка, наезжает на фото */}
-            <span
-              className="font-hand text-[#1F5B4E] absolute z-10"
-              style={{
-                fontSize: 'min(5vw, 4.2rem)',
-                right: '-2%',
-                bottom: '-1.6em',
-                lineHeight: 1,
-              }}
-            >
-              из бумаги
-            </span>
+            {/* «из бумаги» — правее центра, наезжает на фото */}
+            <div className="flex justify-end pr-[2%]">
+              <span
+                className="font-hand text-[#1F5B4E] -mt-3 relative z-10"
+                style={{ fontSize: 'min(4vw, 3.5rem)' }}
+              >
+                из бумаги
+              </span>
+            </div>
           </div>
 
           {/* Основной контент + фото в grid */}
