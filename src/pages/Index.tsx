@@ -349,39 +349,143 @@ export default function Index() {
             <div className="bg-[#F7EFE2] rounded-3xl p-6 md:p-8">
               <p className="text-center text-[#1F5B4E] text-sm mb-5">Внимательно проверьте данные при вводе!</p>
 
-              <div className="space-y-3">
-                <input
-                  type="text"
-                  placeholder="Введите ваше имя"
-                  className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
-                />
-                <input
-                  type="email"
-                  placeholder="Введите ваш эл. адрес"
-                  className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
-                />
-                <input
-                  type="tel"
-                  placeholder="Введите ваш телефон"
-                  className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
-                />
-                <button className="w-full bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-base py-4 rounded-xl shadow mt-1">
+              <form
+                id="s_f_981236568851782220940"
+                method="post"
+                action="https://salid.site/add-lead.php?o=98123&w=656885&s=1&t_m=98123-3"
+                className="space-y-3"
+              >
+                {/* Поле Имя */}
+                <div>
+                  <input
+                    id="name_981236568851782220940"
+                    type="text"
+                    name="name"
+                    placeholder="Введите ваше имя"
+                    className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
+                  />
+                  <div id="e_n_981236568851782220940" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
+                </div>
+
+                {/* Поле Email */}
+                <div>
+                  <input
+                    id="email_981236568851782220940"
+                    type="text"
+                    name="email"
+                    placeholder="Введите ваш эл. адрес"
+                    className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
+                  />
+                  <div id="e_m_981236568851782220940" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
+                </div>
+
+                {/* Поле Телефон */}
+                <div>
+                  <input
+                    id="phone_981236568851782220940"
+                    type="text"
+                    name="phone"
+                    placeholder="Введите ваш телефон"
+                    className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
+                  />
+                  <div id="e_f_981236568851782220940" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
+                </div>
+
+                {/* Скрытые служебные поля партнёрской системы */}
+                <input type="hidden" name="requestTime" value="1654496406" />
+                <input type="hidden" name="requestSimpleSign" value="da6e2c2936d8a1f300a895ffd36cfc06" />
+
+                {/* Чекбокс согласия */}
+                <div id="row_approval_981236568851782220940" className="flex gap-3 items-start pt-1">
+                  <input
+                    id="approval_981236568851782220940"
+                    type="checkbox"
+                    name="approval"
+                    className="mt-0.5 shrink-0 w-4 h-4 accent-[#1F5B4E] cursor-pointer"
+                  />
+                  <label htmlFor="approval_981236568851782220940" className="text-xs text-[#1F5B4E]/70 leading-relaxed cursor-pointer">
+                    <a href="https://loza-school.ru/privacy" target="_blank" rel="noreferrer" className="underline text-[#1F5B4E]/70">
+                      Я согласен на обработку моих персональных данных в соответствии с Политикой конфиденциальности, Договором оферты, Согласием и на получение рассылки
+                    </a>
+                  </label>
+                </div>
+                <div id="e_a_981236568851782220940" className="text-red-500 text-xs min-h-[1rem]" />
+
+                {/* Кнопка */}
+                <button
+                  id="btnform_981236568851782220940"
+                  type="button"
+                  className="w-full bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-base py-4 rounded-xl shadow mt-1 cursor-pointer"
+                >
                   ЗАРЕГИСТРИРОВАТЬСЯ
                 </button>
-              </div>
+              </form>
 
-              <div className="mt-5 flex gap-3 items-start">
-                <input type="checkbox" id="consent" className="mt-0.5 shrink-0 w-4 h-4 accent-[#1F5B4E]" />
-                <label htmlFor="consent" className="text-xs text-[#1F5B4E]/70 italic leading-relaxed cursor-pointer">
-                  <span className="font-semibold not-italic text-[#1F5B4E]">Согласие</span>
-                  <br />
-                  Я согласен на обработку моих персональных данных в соответствии с{' '}
-                  <a href="#" className="underline text-[#1F5B4E]">Политикой конфиденциальности</a>,{' '}
-                  <a href="#" className="underline text-[#1F5B4E]">Договором оферты</a>,{' '}
-                  <a href="#" className="underline text-[#1F5B4E]">Согласием</a> и на получение{' '}
-                  <a href="#" className="underline text-[#1F5B4E]">Информационной рассылки</a>
-                </label>
-              </div>
+              {/* Партнёрский скрипт — инициализация формы и валидация */}
+              <script dangerouslySetInnerHTML={{ __html: `
+                (function() {
+                  var f = document.getElementById('s_f_981236568851782220940');
+                  if (!f) return;
+                  var fa = f.action;
+                  if (fa) {
+                    var u = new URL(fa);
+                    var c = u.searchParams.get("o") + u.searchParams.get("w") + Math.round((new Date()).getTime() / 1000);
+                    f.action = fa + '&c=' + c;
+                    var img = new Image(0, 0);
+                    var subid = document.querySelector('input[name=subid]');
+                    img.src = 'https://salid.site/pixel.php' + u.search + '&c=' + c + '&a_l=' + window.location.href;
+                    if (subid) img.src += '&subid=' + subid.value;
+                    f.insertAdjacentElement('afterEnd', img);
+                  }
+
+                  function showError(id, msg) {
+                    var el = document.querySelector(id);
+                    if (el) el.textContent = msg;
+                  }
+                  function isEmailValid(val, errId) {
+                    var ok = /^[^\\s@]+@[^\\s@]+[.][^\\s@]+$/.test(val.toLowerCase());
+                    showError(errId, ok ? '' : 'Некорректный email');
+                    return ok;
+                  }
+                  function isRequired(val, errId) {
+                    var ok = val !== '';
+                    showError(errId, ok ? '' : 'Поле не заполнено');
+                    return ok;
+                  }
+                  function isChecked(el) {
+                    var row = document.getElementById('row_approval_981236568851782220940');
+                    if (!el.checked) { row && row.classList.add('outline', 'outline-red-400', 'rounded'); return false; }
+                    row && row.classList.remove('outline', 'outline-red-400', 'rounded');
+                    return true;
+                  }
+                  function validateForm() {
+                    var eOk = isEmailValid(document.querySelector('#email_981236568851782220940').value.trim(), '#e_m_981236568851782220940');
+                    var nOk = isRequired(document.querySelector('#name_981236568851782220940').value.trim(), '#e_n_981236568851782220940');
+                    var pOk = isRequired(document.querySelector('#phone_981236568851782220940').value.trim(), '#e_f_981236568851782220940');
+                    var aOk = isChecked(document.querySelector('#approval_981236568851782220940'));
+                    if (eOk && nOk && pOk && aOk) f.submit();
+                  }
+
+                  document.getElementById('btnform_981236568851782220940').addEventListener('click', function(e) {
+                    e.preventDefault(); validateForm();
+                  });
+
+                  function debounce(fn, delay) {
+                    var t; return function() { clearTimeout(t); t = setTimeout(fn.bind(this, arguments[0]), delay || 500); };
+                  }
+                  f.addEventListener('input', debounce(function(e) {
+                    var id = e.target.id;
+                    if (id === 'name_981236568851782220940') isRequired(e.target.value.trim(), '#e_n_981236568851782220940');
+                    if (id === 'email_981236568851782220940') isEmailValid(e.target.value.trim(), '#e_m_981236568851782220940');
+                    if (id === 'phone_981236568851782220940') isRequired(e.target.value.trim(), '#e_f_981236568851782220940');
+                    if (id === 'approval_981236568851782220940') isChecked(e.target);
+                  }));
+
+                  document.querySelectorAll('#s_f_981236568851782220940 input[type=text]').forEach(function(inp) {
+                    inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); validateForm(); } });
+                  });
+                })();
+              ` }} />
             </div>
           </div>
         </div>
