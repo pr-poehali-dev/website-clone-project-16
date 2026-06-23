@@ -112,14 +112,14 @@ export default function Index() {
       </section>
 
       {/* ===== HERO (ПК) ===== */}
-      <section className="hidden md:block pt-10 pb-0">
+      <section className="hidden md:block pt-20 pb-0">
         <div className="max-w-[1200px] mx-auto px-8">
-          <p className="font-bold tracking-widest text-[#1F5B4E] text-[1.1rem] mb-2">БЕСПЛАТНЫЙ КУРС</p>
+          <p className="font-bold tracking-widest text-[#1F5B4E] text-[1.1rem] mb-0">БЕСПЛАТНЫЙ КУРС</p>
 
           {/* Заголовок + «из бумаги» */}
           <div className="w-full">
             <h1
-              className="text-[#F2C12E] font-black leading-none tracking-tight whitespace-nowrap text-left"
+              className="text-[#F2C12E] font-black leading-none tracking-tight whitespace-nowrap text-left mt-0"
               style={{ fontSize: 'min(4.6vw, 3.8rem)' }}
             >
               С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
@@ -136,7 +136,7 @@ export default function Index() {
           </div>
 
           {/* Основной контент + фото */}
-          <div className="relative flex gap-10 mt-6 pb-10 items-end">
+          <div className="relative flex gap-10 mt-2 pb-10 items-end">
             {/* Левая колонка — контент, фиксированная ширина чтобы не наезжать на фото */}
             <div className="flex flex-col w-[38%] shrink-0">
               <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 self-start">
