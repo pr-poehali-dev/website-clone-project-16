@@ -135,7 +135,7 @@ export default function Index() {
             <div className="flex justify-end -mt-2 relative z-10">
               <span
                 className="font-hand text-[#1F5B4E]"
-                style={{ fontSize: 'min(3.8vw, 3.2rem)' }}
+                style={{ fontSize: 'min(5.7vw, 4.8rem)' }}
               >
                 из бумаги
               </span>
