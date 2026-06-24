@@ -285,14 +285,14 @@ export default function Index() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {IF_CARDS.slice(0, 4).map((t, i) => (
-            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-8 min-h-[140px]">
+            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-8 min-h-[168px]">
               <p className="text-sm md:text-base leading-snug">{t}</p>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           {IF_CARDS.slice(4).map((t, i) => (
-            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-8 min-h-[140px]">
+            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-8 min-h-[168px]">
               <p className="text-sm md:text-base leading-snug">{t}</p>
             </div>
           ))}
