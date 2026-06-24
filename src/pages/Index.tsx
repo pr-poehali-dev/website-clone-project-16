@@ -145,10 +145,10 @@ export default function Index() {
       {/* ===== HERO (мобиль) ===== */}
       <section className="md:hidden max-w-[1200px] mx-auto px-4 pt-8 pb-6">
         <p className="font-bold tracking-widest text-[#1F5B4E] text-sm text-center mb-3">БЕСПЛАТНЫЙ КУРС</p>
-        <h1 className="font-black leading-[1.1] text-left">
-          <span className="text-[#F2C12E] block w-full" style={{ fontSize: 'clamp(1.6rem, 9.5vw, 3rem)' }}>С НУЛЯ ДО ПЕРВОГО</span>
-          <span className="text-[#F2C12E] block" style={{ fontSize: 'clamp(1.6rem, 9.5vw, 3rem)' }}>ИЗДЕЛИЯ</span>
-          <span className="block font-hand text-[#1F5B4E] -mt-1" style={{ fontSize: 'clamp(2rem, 11vw, 3.5rem)' }}>из бумаги</span>
+        <h1 className="font-black leading-[1.15] text-center">
+          <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: '8.5vw' }}>С НУЛЯ ДО ПЕРВОГО</span>
+          <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: '8.5vw' }}>ИЗДЕЛИЯ</span>
+          <span className="block font-hand text-[#1F5B4E]" style={{ fontSize: '10vw' }}>из бумаги</span>
         </h1>
         <div className="mt-5 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
           <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
