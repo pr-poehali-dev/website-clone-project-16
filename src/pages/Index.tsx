@@ -119,7 +119,10 @@ export default function Index() {
       const nOk = isRequired(name, '#e_n_981236568851782220940');
       const pOk = isRequired(phone, '#e_f_981236568851782220940');
       const aOk = isChecked(approval);
-      if (eOk && nOk && pOk && aOk) f.submit();
+      if (eOk && nOk && pOk && aOk) {
+        if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(101026698, 'reachGoal', 'lead_goal');
+        f.submit();
+      }
     }
 
     const btn = document.getElementById('btnform_981236568851782220940');
