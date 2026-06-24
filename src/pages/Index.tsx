@@ -146,9 +146,9 @@ export default function Index() {
       <section className="md:hidden max-w-[1200px] mx-auto px-4 pt-8 pb-6">
         <p className="font-bold tracking-widest text-[#1F5B4E] text-sm text-center mb-3">БЕСПЛАТНЫЙ КУРС</p>
         <h1 className="font-black leading-[1.15] text-center">
-          <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: '8.5vw' }}>С НУЛЯ ДО ПЕРВОГО</span>
-          <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: '8.5vw' }}>ИЗДЕЛИЯ</span>
-          <span className="block font-hand text-[#1F5B4E]" style={{ fontSize: '10vw' }}>из бумаги</span>
+          <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>С НУЛЯ ДО ПЕРВОГО</span>
+          <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>ИЗДЕЛИЯ</span>
+          <span className="block font-hand text-[#1F5B4E]" style={{ fontSize: 'min(9vw, 3rem)' }}>из бумаги</span>
         </h1>
         <div className="mt-5 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
           <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
