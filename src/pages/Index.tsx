@@ -193,22 +193,20 @@ export default function Index() {
           <p className="font-bold tracking-widest text-[#1F5B4E] text-[1.1rem] mb-0">БЕСПЛАТНЫЙ КУРС</p>
 
           {/* Заголовок + «из бумаги» */}
-          <div className="w-full">
+          <div className="w-full relative">
             <h1
               className="text-[#F2C12E] font-black leading-none tracking-tight whitespace-nowrap text-left mt-0"
               style={{ fontSize: 'min(4.6vw, 3.8rem)' }}
             >
               С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
             </h1>
-            {/* «из бумаги» — правее центра, наезжает на фото */}
-            <div className="flex justify-end -mt-14 relative z-10">
-              <span
-                className="font-hand text-[#1F5B4E]"
-                style={{ fontSize: 'min(5.7vw, 4.8rem)', display: 'inline-block', transform: 'rotate(-25deg)', transformOrigin: 'right center' }}
-              >
-                из бумаги
-              </span>
-            </div>
+            {/* «из бумаги» — абсолютно, не влияет на поток */}
+            <span
+              className="font-hand text-[#1F5B4E] absolute right-0 z-10"
+              style={{ fontSize: 'min(5.7vw, 4.8rem)', top: '-1.2rem', transform: 'rotate(-25deg)', transformOrigin: 'right center' }}
+            >
+              из бумаги
+            </span>
           </div>
 
           {/* Основной контент + фото */}
