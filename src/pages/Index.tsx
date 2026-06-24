@@ -412,7 +412,7 @@ export default function Index() {
       </section>
 
       {/* ===== ФОРМА ===== */}
-      <section id="form" className="bg-white pt-4 pb-14">
+      <section id="form" className="bg-white pt-4 pb-4 md:pb-14">
         <div className="max-w-[1200px] mx-auto px-4">
           <p className="text-center text-[#1F5B4E] font-bold tracking-widest text-xs md:text-sm mb-1">
             ЗАРЕГИСТРИРОВАТЬСЯ НА БЕСПЛАТНЫЙ КУРС
