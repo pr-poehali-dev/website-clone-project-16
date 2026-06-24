@@ -150,7 +150,7 @@ export default function Index() {
           <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>ИЗДЕЛИЯ</span>
           <span className="block font-hand text-[#1F5B4E]" style={{ fontSize: 'min(9vw, 3rem)', transform: 'translateX(30%) translateY(-65%) rotate(-25deg)', transformOrigin: 'center' }}>из бумаги</span>
         </h1>
-        <div className="mt-5 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
+        <div className="-mt-6 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
           <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
             ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
           </p>
