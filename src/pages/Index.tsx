@@ -295,7 +295,7 @@ export default function Index() {
           Вас ждет 4 урока, на которых вы:
         </p>
         <div className="md:hidden text-center mb-6">
-          <span className="inline-block bg-[#1F5B4E] text-white text-sm font-black uppercase tracking-wide px-4 py-2 rounded-xl">
+          <span className="inline-block text-[#F2C12E] text-lg font-black italic">
             Сплетете первое изделие уже<br />через три дня
           </span>
         </div>
