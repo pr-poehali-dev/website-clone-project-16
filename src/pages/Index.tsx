@@ -295,7 +295,7 @@ export default function Index() {
           Вас ждет 4 урока, на которых вы:
         </p>
         <p className="md:hidden font-bold text-[#1F5B4E] text-sm uppercase tracking-wide text-center mb-6">
-          Сплетете первое изделие уже через три дня
+          Сплетете первое изделие уже<br />через три дня
         </p>
 
         <div className="grid md:grid-cols-2 gap-10 items-start">
