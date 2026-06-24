@@ -148,7 +148,7 @@ export default function Index() {
         <h1 className="font-black leading-[1.15] text-center">
           <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>С НУЛЯ ДО ПЕРВОГО</span>
           <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>ИЗДЕЛИЯ</span>
-          <span className="block font-hand text-[#1F5B4E]" style={{ fontSize: 'min(9vw, 3rem)', transform: 'translateX(30%) rotate(-40deg)', transformOrigin: 'center' }}>из бумаги</span>
+          <span className="block font-hand text-[#1F5B4E]" style={{ fontSize: 'min(9vw, 3rem)', transform: 'translateX(30%) rotate(-25deg)', transformOrigin: 'center' }}>из бумаги</span>
         </h1>
         <div className="mt-5 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
           <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
