@@ -143,7 +143,7 @@ export default function Index() {
     <div className="min-h-screen bg-white font-sans text-[#1F5B4E] overflow-x-hidden pb-10 md:pb-0">
 
       {/* ===== HERO (мобиль) ===== */}
-      <section className="md:hidden max-w-[1200px] mx-auto px-4 pt-8 pb-6">
+      <section className="md:hidden max-w-[1200px] mx-auto px-4 pt-2 pb-6">
         <p className="font-bold tracking-widest text-[#1F5B4E] text-sm text-center mb-3">БЕСПЛАТНЫЙ КУРС</p>
         <h1 className="font-black leading-[1.15] text-center">
           <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>С НУЛЯ ДО ПЕРВОГО</span>
