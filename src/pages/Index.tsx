@@ -300,7 +300,7 @@ export default function Index() {
         <div className="flex justify-center mt-8">
           <button
             onClick={scrollToForm}
-            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-20 py-5 rounded-xl shadow-md w-full md:w-auto"
+            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-24 py-7 rounded-xl shadow-md w-full md:w-auto"
           >
             ХОЧУ НА КУРС
           </button>
