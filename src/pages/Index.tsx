@@ -291,12 +291,14 @@ export default function Index() {
           <span className="text-[#F2C12E]">ПРОГРАММА</span>{' '}
           <span className="text-[#1F5B4E]">КУРСА</span>
         </h2>
-        <p className="text-center font-bold text-[#1F5B4E] text-base md:text-xl mb-2">
+        <p className="text-center font-bold text-[#1F5B4E] text-base md:text-xl mb-3">
           Вас ждет 4 урока, на которых вы:
         </p>
-        <p className="md:hidden font-bold text-[#1F5B4E] text-sm uppercase tracking-wide text-center mb-6">
-          Сплетете первое изделие уже<br />через три дня
-        </p>
+        <div className="md:hidden text-center mb-6">
+          <span className="inline-block bg-[#1F5B4E] text-white text-sm font-black uppercase tracking-wide px-4 py-2 rounded-xl">
+            Сплетете первое изделие уже<br />через три дня
+          </span>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* Мобиль: два круга */}
