@@ -183,7 +183,7 @@ export default function Index() {
             <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
             <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
           </div>
-          <img src={IMG_GIFT} alt="Подарки" className="w-28 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginTop: '-2rem', marginBottom: '-1rem' }} />
+          <img src={IMG_GIFT} alt="Подарки" className="w-36 object-contain shrink-0 relative z-10" style={{ marginRight: '-0.5rem', marginLeft: '-1rem', marginTop: '-1rem', marginBottom: '-2rem' }} />
         </div>
       </section>
 
