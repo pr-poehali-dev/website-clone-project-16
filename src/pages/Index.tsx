@@ -506,11 +506,7 @@ export default function Index() {
       </section>
 
       {/* ===== НИЖНЯЯ ПЛАШКА (только мобиль) ===== */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/90 backdrop-blur-sm border-t border-[#E8D9B8] py-2 text-center z-50">
-        <p className="text-[10px] font-bold tracking-widest text-[#1F5B4E]/60 uppercase">
-          С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
-        </p>
-      </div>
+
 
     </div>
   );
