@@ -10,21 +10,14 @@ const scrollToForm = () => {
 };
 
 function useTimer() {
-  const getSecondsLeft = () => {
-    const now = new Date();
-    const end = new Date();
-    end.setHours(23, 59, 59, 0);
-    return Math.max(0, Math.floor((end.getTime() - now.getTime()) / 1000));
-  };
-  const [secs, setSecs] = useState(getSecondsLeft);
+  const [secs, setSecs] = useState(5 * 60);
   useEffect(() => {
-    const id = setInterval(() => setSecs(getSecondsLeft()), 1000);
+    const id = setInterval(() => setSecs(v => Math.max(0, v - 1)), 1000);
     return () => clearInterval(id);
   }, []);
-  const h = String(Math.floor(secs / 3600)).padStart(2, '0');
-  const m = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+  const m = String(Math.floor(secs / 60)).padStart(2, '0');
   const s = String(secs % 60).padStart(2, '0');
-  return { h, m, s };
+  return { m, s };
 }
 
 const TimerDigit = ({ value }: { value: string }) => (
@@ -177,7 +170,6 @@ export default function Index() {
         <div className="mt-7">
           <p className="font-bold tracking-widest text-[#1F5B4E] text-xs text-center mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
           <div className="flex items-center gap-1 justify-center">
-            <TimerDigit value={h[0]} /><TimerDigit value={h[1]} /><TimerColon />
             <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
             <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
           </div>
@@ -234,7 +226,6 @@ export default function Index() {
               <div className="mt-7">
                 <p className="font-bold tracking-widest text-[#1F5B4E] text-sm mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
                 <div className="flex items-center gap-1">
-                  <TimerDigit value={h[0]} /><TimerDigit value={h[1]} /><TimerColon />
                   <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
                   <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
                   <svg className="ml-6 mb-1" width="80" height="64" viewBox="0 0 80 64" fill="none">
