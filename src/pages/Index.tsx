@@ -295,7 +295,7 @@ export default function Index() {
           Вас ждет 4 урока, на которых вы:
         </p>
         <div className="md:hidden text-center mb-6">
-          <span className="inline-block text-[#F2C12E] text-2xl font-hand">
+          <span className="inline-block text-[#F2C12E] text-4xl font-hand">
             Сплетете первое изделие уже<br />через три дня
           </span>
         </div>
