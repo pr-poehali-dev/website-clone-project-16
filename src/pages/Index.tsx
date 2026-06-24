@@ -120,7 +120,7 @@ export default function Index() {
       const pOk = isRequired(phone, '#e_f_981236568851782220940');
       const aOk = isChecked(approval);
       if (eOk && nOk && pOk && aOk) {
-        if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(101026698, 'reachGoal', 'lead_goal');
+        if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(110110789, 'reachGoal', 'lead_goal');
         f.submit();
       }
     }
