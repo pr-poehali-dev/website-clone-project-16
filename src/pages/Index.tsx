@@ -177,13 +177,13 @@ export default function Index() {
         <div className="mt-6">
           <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-lg" />
         </div>
-        <div className="mt-6 border-2 border-[#1F5B4E] rounded-2xl p-5 flex gap-4 items-center">
+        <div className="mt-6 border-2 border-[#1F5B4E] rounded-2xl p-5 flex gap-4 items-center overflow-visible relative">
           <div className="flex-1">
             <p className="font-bold text-[#1F5B4E] text-sm mb-1">Подарки при регистрации:</p>
             <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
             <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
           </div>
-          <img src={IMG_GIFT} alt="Подарки" className="w-20 h-20 rounded-xl object-cover shrink-0" />
+          <img src={IMG_GIFT} alt="Подарки" className="w-28 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginTop: '-2rem', marginBottom: '-1rem' }} />
         </div>
       </section>
 
