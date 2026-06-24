@@ -278,21 +278,21 @@ export default function Index() {
       </section>
 
       {/* ===== КУРС ДЛЯ ВАС ЕСЛИ ===== */}
-      <section className="max-w-[1200px] mx-auto px-4 pt-16 pb-12 md:pt-20 md:pb-20">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-16">
+      <section className="max-w-[1200px] mx-auto px-4 pb-12 md:pt-20 md:pb-20">
+        <h2 className="text-3xl md:text-5xl font-black text-center mb-8 md:mb-16">
           <span className="text-[#1F5B4E]">КУРС ДЛЯ ВАС </span>
           <span className="text-[#F2C12E]">ЕСЛИ:</span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {IF_CARDS.slice(0, 4).map((t, i) => (
-            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-8 min-h-[168px]">
+            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-6 md:py-8 min-h-[130px] md:min-h-[168px]">
               <p className="text-sm md:text-base leading-snug">{t}</p>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           {IF_CARDS.slice(4).map((t, i) => (
-            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-8 min-h-[168px]">
+            <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-6 md:py-8 min-h-[130px] md:min-h-[168px]">
               <p className="text-sm md:text-base leading-snug">{t}</p>
             </div>
           ))}
@@ -300,7 +300,7 @@ export default function Index() {
         <div className="flex justify-center mt-8">
           <button
             onClick={scrollToForm}
-            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-24 py-7 rounded-xl shadow-md w-full md:w-auto"
+            className="bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-lg px-16 py-4 md:px-24 md:py-7 rounded-xl shadow-md w-full md:w-auto"
           >
             ХОЧУ НА КУРС
           </button>
