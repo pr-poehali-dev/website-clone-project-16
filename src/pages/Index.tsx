@@ -10,7 +10,19 @@ const scrollToForm = () => {
 };
 
 function useTimer() {
-  const [secs, setSecs] = useState(5 * 60);
+  const getInitialSecs = () => {
+    const key = 'timer_end';
+    const today = new Date().toDateString();
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      const { end, date } = JSON.parse(stored);
+      if (date === today) return Math.max(0, Math.floor((end - Date.now()) / 1000));
+    }
+    const end = Date.now() + 5 * 60 * 1000;
+    localStorage.setItem(key, JSON.stringify({ end, date: today }));
+    return 5 * 60;
+  };
+  const [secs, setSecs] = useState(getInitialSecs);
   useEffect(() => {
     const id = setInterval(() => setSecs(v => Math.max(0, v - 1)), 1000);
     return () => clearInterval(id);
@@ -496,16 +508,10 @@ export default function Index() {
                   ЗАРЕГИСТРИРОВАТЬСЯ
                 </button>
               </form>
-
-
             </div>
           </div>
         </div>
       </section>
-
-      {/* ===== НИЖНЯЯ ПЛАШКА (только мобиль) ===== */}
-
-
     </div>
   );
 }
