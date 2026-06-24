@@ -312,10 +312,10 @@ export default function Index() {
           </div>
 
           {/* ПК: три позиционированных круга */}
-          <div className="relative h-[400px] hidden md:block">
+          <div className="relative h-[500px] hidden md:block">
             <img src={IMG_HERO} className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
             <img src={IMG_HEARTS} className="absolute top-8 right-0 w-60 h-60 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full shadow-lg border-4 border-white overflow-hidden">
+            <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full shadow-lg border-4 border-white overflow-hidden">
               <img src="https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/ad63ee3b-30b2-4c37-8e21-d8db1f157043.png" className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
             </div>
           </div>
