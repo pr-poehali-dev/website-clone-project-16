@@ -278,8 +278,8 @@ export default function Index() {
       </section>
 
       {/* ===== КУРС ДЛЯ ВАС ЕСЛИ ===== */}
-      <section className="max-w-[1200px] mx-auto px-4 pb-12 md:pb-20">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-8">
+      <section className="max-w-[1200px] mx-auto px-4 pt-16 pb-12 md:pt-20 md:pb-20">
+        <h2 className="text-3xl md:text-5xl font-black text-center mb-16">
           <span className="text-[#1F5B4E]">КУРС ДЛЯ ВАС </span>
           <span className="text-[#F2C12E]">ЕСЛИ:</span>
         </h2>
