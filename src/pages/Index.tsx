@@ -145,7 +145,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#1F5B4E] overflow-x-hidden pb-10 md:pb-0">
+    <div className="min-h-screen bg-white font-sans text-[#1F5B4E] overflow-x-hidden">
 
       {/* ===== HERO (мобиль) ===== */}
       <section className="md:hidden max-w-[1200px] mx-auto px-4 pt-2 pb-6">
