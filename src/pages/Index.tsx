@@ -155,15 +155,15 @@ export default function Index() {
             ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
           </p>
         </div>
-        <div className="mt-6">
-          <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
-          <ul className="space-y-1.5 text-base">
+        <div className="mt-3">
+          <p className="font-bold text-base mb-1">Зарегистрируйтесь и получите:</p>
+          <ul className="space-y-0.5 text-base">
             {['4 подробных онлайн-урока по плетению из бумажной лозы','30 дней доступа к курсу','Уроки придут вам в личные сообщения'].map((t, i) => (
               <li key={i} className="flex gap-2 items-start"><span className="shrink-0 mt-0.5">•</span><span>{t}</span></li>
             ))}
           </ul>
         </div>
-        <button onClick={scrollToForm} className="mt-6 w-full bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-8 rounded-xl shadow-md">
+        <button onClick={scrollToForm} className="mt-3 w-full bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-8 rounded-xl shadow-md">
           ПОЛУЧИТЬ УРОКИ
         </button>
         <div className="mt-7">
@@ -214,21 +214,21 @@ export default function Index() {
           {/* Основной контент + фото */}
           <div className="relative flex gap-10 mt-2 pb-10 items-end">
             {/* Левая колонка — контент, фиксированная ширина чтобы не наезжать на фото */}
-            <div className="flex flex-col w-[38%] shrink-0">
+            <div className="flex flex-col w-[46%] shrink-0">
               <div className="border-2 border-[#1F5B4E] rounded-2xl px-5 py-4 self-start">
                 <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
                   ПОШАГОВЫЙ РАЗБОР ОТ СКРУТКИ ПЕРВОЙ ЛОЗЫ<br />ДО ПЛЕТЕНИЯ ПЕРВОГО ИЗДЕЛИЯ
                 </p>
               </div>
-              <div className="mt-5">
-                <p className="font-bold text-base mb-3">Зарегистрируйтесь и получите:</p>
-                <ul className="space-y-1.5 text-base">
+              <div className="mt-3">
+                <p className="font-bold text-base mb-1">Зарегистрируйтесь и получите:</p>
+                <ul className="space-y-0.5 text-base">
                   {['4 подробных онлайн-урока по плетению из бумажной лозы','30 дней доступа к курсу','Уроки придут вам в личные сообщения'].map((t, i) => (
                     <li key={i} className="flex gap-2 items-start"><span className="shrink-0 mt-0.5">•</span><span>{t}</span></li>
                   ))}
                 </ul>
               </div>
-              <button onClick={scrollToForm} className="mt-6 self-start bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-10 rounded-xl shadow-md">
+              <button onClick={scrollToForm} className="mt-3 self-start bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-10 rounded-xl shadow-md">
                 ПОЛУЧИТЬ УРОКИ
               </button>
               <div className="mt-7">
