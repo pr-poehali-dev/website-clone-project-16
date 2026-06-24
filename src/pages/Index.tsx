@@ -166,6 +166,14 @@ export default function Index() {
         <button onClick={scrollToForm} className="mt-3 w-full bg-[#D9211E] hover:bg-[#b81a18] transition-colors text-white font-bold text-lg py-4 px-8 rounded-xl shadow-md">
           ПОЛУЧИТЬ УРОКИ
         </button>
+        <div className="mt-4 border-2 border-[#1F5B4E] rounded-2xl p-5 flex gap-4 items-center overflow-visible relative">
+          <div className="flex-1">
+            <p className="font-bold text-[#1F5B4E] text-sm mb-1">Подарки при регистрации:</p>
+            <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
+            <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
+          </div>
+          <img src={IMG_GIFT} alt="Подарки" className="w-32 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginLeft: '-0.5rem', marginTop: '-1.5rem', marginBottom: '-2rem' }} />
+        </div>
         <div className="mt-7">
           <p className="font-bold tracking-widest text-[#1F5B4E] text-xs text-center mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
           <div className="flex items-center gap-1 justify-center">
@@ -176,14 +184,6 @@ export default function Index() {
         </div>
         <div className="mt-6">
           <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-lg" />
-        </div>
-        <div className="mt-6 border-2 border-[#1F5B4E] rounded-2xl p-5 flex gap-4 items-center overflow-visible relative">
-          <div className="flex-1">
-            <p className="font-bold text-[#1F5B4E] text-sm mb-1">Подарки при регистрации:</p>
-            <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
-            <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
-          </div>
-          <img src={IMG_GIFT} alt="Подарки" className="w-32 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginLeft: '-0.5rem', marginTop: '-1.5rem', marginBottom: '-2rem' }} />
         </div>
       </section>
 
