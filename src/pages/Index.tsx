@@ -201,7 +201,7 @@ export default function Index() {
               С НУЛЯ ДО ПЕРВОГО ИЗДЕЛИЯ
             </h1>
             {/* «из бумаги» — правее центра, наезжает на фото */}
-            <div className="flex justify-end -mt-20 relative z-10">
+            <div className="flex justify-end -mt-28 relative z-10">
               <span
                 className="font-hand text-[#1F5B4E]"
                 style={{ fontSize: 'min(5.7vw, 4.8rem)', display: 'inline-block', transform: 'rotate(-25deg)', transformOrigin: 'right center' }}
