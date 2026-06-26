@@ -42,6 +42,16 @@ const TimerColon = () => (
   <span className="text-2xl md:text-3xl font-black text-[#1F5B4E] pb-1">:</span>
 );
 
+const IF_CARDS_MOBILE = [
+  <><b>Устали от рутины</b><br />и хочется внести<br />в жизнь разнообразия</>,
+  <>Хотите провести время<br /><b>наедине с собой</b></>,
+  <>Хотите сделать <b>стильные<br />изделия</b> для своего дома</>,
+  <>Ищете хобби, которое<br />поможет отдохнуть<br />от повседневной суеты</>,
+  <>Любите рукоделие<br />и хочется освоить<br /><b>новое ремесло</b></>,
+  <>Хотите найти дело, которое<br />будет приносить<br /><b>стабильный доход</b></>,
+  <>Никогда не плели,<br />но <b>хотите научиться</b></>,
+];
+
 const IF_CARDS = [
   <><b>Устали от рутины</b> и хочется внести в жизнь разнообразия</>,
   <>Хотите провести время <b>наедине с собой</b></>,
@@ -286,14 +296,20 @@ export default function Index() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {IF_CARDS.slice(0, 4).map((t, i) => (
             <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-6 md:py-8 min-h-[130px] md:min-h-[168px]">
-              <p className="text-sm md:text-base leading-snug">{t}</p>
+              <p className="text-base md:text-base leading-snug">
+                <span className="md:hidden">{IF_CARDS_MOBILE[i]}</span>
+                <span className="hidden md:inline">{t}</span>
+              </p>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           {IF_CARDS.slice(4).map((t, i) => (
             <div key={i} className="bg-[#F7EFE2] rounded-2xl flex items-center justify-center text-center text-[#1F5B4E] px-6 py-6 md:py-8 min-h-[130px] md:min-h-[168px]">
-              <p className="text-sm md:text-base leading-snug">{t}</p>
+              <p className="text-base md:text-base leading-snug">
+                <span className="md:hidden">{IF_CARDS_MOBILE[i + 4]}</span>
+                <span className="hidden md:inline">{t}</span>
+              </p>
             </div>
           ))}
         </div>
