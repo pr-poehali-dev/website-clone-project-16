@@ -432,14 +432,13 @@ export default function Index() {
             <span className="text-[#F2C12E]">ДО ПЕРВОГО ИЗДЕЛИЯ</span>
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
             {/* Фото слева — только ПК */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex">
               <img
                 src={IMG_HEARTS}
                 alt="Изделия из бумажной лозы"
                 className="rounded-3xl w-full object-cover shadow-lg"
-                style={{ maxHeight: 520 }}
               />
             </div>
 
