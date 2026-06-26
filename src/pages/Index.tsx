@@ -100,10 +100,6 @@ export default function Index() {
     const f = document.getElementById(FORM_ID) as HTMLFormElement | null;
     if (!f) return;
 
-    // Обновляем requestTime актуальным временем
-    const rtField = f.querySelector('input[name=requestTime]') as HTMLInputElement | null;
-    if (rtField) rtField.value = String(Math.round(Date.now() / 1000));
-
     // Подхватываем subid из URL страницы (реферальный параметр)
     const pageParams = new URLSearchParams(window.location.search);
     const subidVal = pageParams.get('subid') || pageParams.get('sub_id') || pageParams.get('utm_content') || '';
