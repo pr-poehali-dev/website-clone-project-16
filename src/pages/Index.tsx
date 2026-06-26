@@ -243,9 +243,9 @@ export default function Index() {
                 <div className="flex items-center gap-1">
                   <TimerDigit value={m[0]} /><TimerDigit value={m[1]} /><TimerColon />
                   <TimerDigit value={s[0]} /><TimerDigit value={s[1]} />
-                  <svg className="ml-6 mb-1" width="80" height="64" viewBox="0 0 80 64" fill="none">
-                    <path d="M 8 4 Q 16 4 26 18 Q 44 46 62 60" stroke="#1F5B4E" strokeWidth="2" strokeDasharray="5 4" fill="none"/>
-                    <polygon points="55,62 65,62 60,53" fill="#1F5B4E"/>
+                  <svg className="ml-6 mb-1" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <path d="M 6 6 A 68 68 0 0 1 58 74" stroke="#1F5B4E" strokeWidth="2" strokeDasharray="5 4" fill="none" strokeLinecap="round"/>
+                    <polygon points="51,72 65,72 58,82" fill="#1F5B4E"/>
                   </svg>
                 </div>
               </div>
