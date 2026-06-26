@@ -100,6 +100,22 @@ export default function Index() {
     const f = document.getElementById(FORM_ID) as HTMLFormElement | null;
     if (!f) return;
 
+    // Обновляем requestTime актуальным временем
+    const rtField = f.querySelector('input[name=requestTime]') as HTMLInputElement | null;
+    if (rtField) rtField.value = String(Math.round(Date.now() / 1000));
+
+    // Подхватываем subid из URL страницы (реферальный параметр)
+    const pageParams = new URLSearchParams(window.location.search);
+    const subidVal = pageParams.get('subid') || pageParams.get('sub_id') || pageParams.get('utm_content') || '';
+    let subidField = f.querySelector('input[name=subid]') as HTMLInputElement | null;
+    if (!subidField && subidVal) {
+      subidField = document.createElement('input');
+      subidField.type = 'hidden';
+      subidField.name = 'subid';
+      f.appendChild(subidField);
+    }
+    if (subidField && subidVal) subidField.value = subidVal;
+
     // Партнёрский пиксель
     const fa = f.action;
     if (fa) {
@@ -107,9 +123,8 @@ export default function Index() {
       const c = u.searchParams.get('o') + u.searchParams.get('w') + Math.round(Date.now() / 1000);
       f.action = fa + '&c=' + c;
       const img = new Image(0, 0);
-      const subid = document.querySelector('input[name=subid]') as HTMLInputElement | null;
-      img.src = 'https://salid.site/pixel.php' + u.search + '&c=' + c + '&a_l=' + window.location.href;
-      if (subid) img.src += '&subid=' + subid.value;
+      img.src = 'https://salid.site/pixel.php' + u.search + '&c=' + c + '&a_l=' + encodeURIComponent(window.location.href);
+      if (subidVal) img.src += '&subid=' + encodeURIComponent(subidVal);
       f.insertAdjacentElement('afterEnd', img);
     }
 
