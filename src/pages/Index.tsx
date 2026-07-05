@@ -171,8 +171,9 @@ export default function Index() {
             yclid: readCookie('yclid') || '',
             page_url: window.location.href,
           });
+          // text/plain — "простой" тип запроса, браузер отправляет его сразу, без предварительной проверки сервера
           const sentViaBeacon = navigator.sendBeacon
-            ? navigator.sendBeacon(TELEGRAM_LEAD_URL, new Blob([leadPayload], { type: 'application/json' }))
+            ? navigator.sendBeacon(TELEGRAM_LEAD_URL, new Blob([leadPayload], { type: 'text/plain' }))
             : false;
           if (!sentViaBeacon) {
             fetch(TELEGRAM_LEAD_URL, {
