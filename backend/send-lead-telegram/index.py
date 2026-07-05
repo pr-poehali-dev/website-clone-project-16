@@ -1,3 +1,4 @@
+import base64
 import json
 import os
 import urllib.request
@@ -25,7 +26,10 @@ def handler(event: dict, context) -> dict:
     if method != 'POST':
         return {'statusCode': 405, 'headers': headers, 'body': json.dumps({'error': 'Method not allowed'})}
 
-    body = json.loads(event.get('body') or '{}')
+    raw_body = event.get('body') or '{}'
+    if event.get('isBase64Encoded'):
+        raw_body = base64.b64decode(raw_body).decode('utf-8')
+    body = json.loads(raw_body or '{}')
     name = body.get('name', '')
     email = body.get('email', '')
     phone = body.get('phone', '')
