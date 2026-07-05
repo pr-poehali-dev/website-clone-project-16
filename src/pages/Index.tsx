@@ -162,19 +162,26 @@ export default function Index() {
       if (eOk && nOk && pOk && aOk) {
         if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(110110789, 'reachGoal', 'lead_goal');
 
-        // Параллельная отправка лида в Telegram (не блокирует основную отправку формы)
+        // Параллельная отправка лида в Telegram (sendBeacon переживает переход/сабмит формы на другой домен)
         try {
-          fetch(TELEGRAM_LEAD_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name,
-              email,
-              phone,
-              yclid: readCookie('yclid') || '',
-              page_url: window.location.href,
-            }),
-          }).catch(() => {});
+          const leadPayload = JSON.stringify({
+            name,
+            email,
+            phone,
+            yclid: readCookie('yclid') || '',
+            page_url: window.location.href,
+          });
+          const sentViaBeacon = navigator.sendBeacon
+            ? navigator.sendBeacon(TELEGRAM_LEAD_URL, new Blob([leadPayload], { type: 'application/json' }))
+            : false;
+          if (!sentViaBeacon) {
+            fetch(TELEGRAM_LEAD_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: leadPayload,
+              keepalive: true,
+            }).catch(() => {});
+          }
         } catch {
           // не мешаем основной отправке формы при любой ошибке
         }
