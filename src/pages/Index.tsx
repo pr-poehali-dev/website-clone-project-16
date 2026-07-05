@@ -77,6 +77,26 @@ const STEPS = [
 ];
 
 const FORM_ID = 's_f_981236568851782220940';
+const TELEGRAM_LEAD_URL = 'https://functions.poehali.dev/b9d4422f-132e-4824-ae7a-d57c7b0a2df5';
+
+function setCookie(name: string, value: string, days: number) {
+  const date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+}
+function readCookie(name: string) {
+  const n = name + '=';
+  const cookies = document.cookie.split(';');
+  for (let c of cookies) {
+    while (c.charAt(0) === ' ') c = c.substring(1);
+    if (c.indexOf(n) === 0) return c.substring(n.length);
+  }
+  return null;
+}
+function getUrlParam(p: string) {
+  const match = new RegExp('[?&]' + p + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
 
 function showError(id: string, msg: string) {
   const el = document.querySelector(id) as HTMLElement | null;
@@ -97,8 +117,18 @@ export default function Index() {
   const { h, m, s } = useTimer();
 
   useEffect(() => {
+    // Сбор yclid из URL в cookie (не влияет на лид-форму)
+    const yclidParam = getUrlParam('yclid');
+    if (yclidParam) setCookie('yclid', yclidParam, 90);
+  }, []);
+
+  useEffect(() => {
     const f = document.getElementById(FORM_ID) as HTMLFormElement | null;
     if (!f) return;
+
+    // Подставляем сохранённый yclid в скрытое поле формы
+    const yclidField = document.getElementById('yclid_field') as HTMLInputElement | null;
+    if (yclidField) yclidField.value = readCookie('yclid') || '';
 
     // Партнёрский пиксель (оригинальная логика salid.site)
     const fa = f.action;
@@ -131,6 +161,24 @@ export default function Index() {
       const aOk = isChecked(approval);
       if (eOk && nOk && pOk && aOk) {
         if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(110110789, 'reachGoal', 'lead_goal');
+
+        // Параллельная отправка лида в Telegram (не блокирует основную отправку формы)
+        try {
+          fetch(TELEGRAM_LEAD_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              email,
+              phone,
+              yclid: readCookie('yclid') || '',
+              page_url: window.location.href,
+            }),
+          }).catch(() => {});
+        } catch {
+          // не мешаем основной отправке формы при любой ошибке
+        }
+
         f.submit();
       }
     }
@@ -507,6 +555,7 @@ export default function Index() {
                 {/* Скрытые служебные поля партнёрской системы */}
                 <input type="hidden" name="requestTime" value="1654496406" />
                 <input type="hidden" name="requestSimpleSign" value="da6e2c2936d8a1f300a895ffd36cfc06" />
+                <input type="hidden" id="yclid_field" name="yclid_field" value="" />
 
                 {/* Чекбокс согласия */}
                 <div id="row_approval_981236568851782220940" className="flex gap-3 items-start pt-1">

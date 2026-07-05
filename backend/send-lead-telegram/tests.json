@@ -1,0 +1,17 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST lead data",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Test", "email": "test@test.com", "phone": "+79990000000", "yclid": "12345", "page_url": "https://example.com"},
+      "expectedStatus": 200
+    }
+  ]
+}
