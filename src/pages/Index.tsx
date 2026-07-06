@@ -77,7 +77,7 @@ const STEPS = [
 ];
 
 const FORM_ID = 's_f_981236568851782220940';
-const TELEGRAM_LEAD_URL = 'https://functions.poehali.dev/b9d4422f-132e-4824-ae7a-d57c7b0a2df5';
+const LEAD_EMAIL_URL = 'https://functions.poehali.dev/bb2ec21a-e37c-47ee-9c61-11a1821e4bb5';
 
 function setCookie(name: string, value: string, days: number) {
   const date = new Date();
@@ -162,7 +162,7 @@ export default function Index() {
       if (eOk && nOk && pOk && aOk) {
         if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(110110789, 'reachGoal', 'lead_goal');
 
-        // Параллельная отправка лида в Telegram (sendBeacon переживает переход/сабмит формы на другой домен)
+        // Параллельная отправка лида на почту (sendBeacon переживает переход/сабмит формы на другой домен)
         try {
           const leadPayload = JSON.stringify({
             name,
@@ -173,10 +173,10 @@ export default function Index() {
           });
           // text/plain — "простой" тип запроса, браузер отправляет его сразу, без предварительной проверки сервера
           const sentViaBeacon = navigator.sendBeacon
-            ? navigator.sendBeacon(TELEGRAM_LEAD_URL, new Blob([leadPayload], { type: 'text/plain' }))
+            ? navigator.sendBeacon(LEAD_EMAIL_URL, new Blob([leadPayload], { type: 'text/plain' }))
             : false;
           if (!sentViaBeacon) {
-            fetch(TELEGRAM_LEAD_URL, {
+            fetch(LEAD_EMAIL_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: leadPayload,

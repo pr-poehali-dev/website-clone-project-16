@@ -1,12 +1,12 @@
 import base64
 import json
 import os
-import urllib.request
-import urllib.parse
+import smtplib
+from email.mime.text import MIMEText
 
 
 def handler(event: dict, context) -> dict:
-    '''Принимает данные лида (имя, email, телефон, yclid) и пересылает их в Telegram-чат владельца'''
+    '''Принимает данные лида (имя, email, телефон, yclid, страница) и отправляет их письмом на почту владельца'''
     method = event.get('httpMethod', 'GET')
 
     if method == 'OPTIONS':
@@ -30,20 +30,21 @@ def handler(event: dict, context) -> dict:
     if event.get('isBase64Encoded'):
         raw_body = base64.b64decode(raw_body).decode('utf-8')
     body = json.loads(raw_body or '{}')
+
     name = body.get('name', '')
     email = body.get('email', '')
     phone = body.get('phone', '')
     yclid = body.get('yclid', '')
     page_url = body.get('page_url', '')
 
-    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
-    chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+    smtp_login = os.environ.get('YANDEX_SMTP_LOGIN')
+    smtp_password = os.environ.get('YANDEX_SMTP_PASSWORD')
 
-    if not bot_token or not chat_id:
-        return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': False, 'note': 'Telegram secrets not configured yet'})}
+    if not smtp_login or not smtp_password:
+        return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': False, 'note': 'SMTP secrets not configured yet'})}
 
     text_lines = [
-        '🆕 Новая заявка с сайта',
+        'Новая заявка с сайта',
         f'Имя: {name}',
         f'Email: {email}',
         f'Телефон: {phone}',
@@ -55,13 +56,15 @@ def handler(event: dict, context) -> dict:
 
     text = '\n'.join(text_lines)
 
-    telegram_url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
-    data = urllib.parse.urlencode({'chat_id': chat_id, 'text': text}).encode()
+    msg = MIMEText(text, 'plain', 'utf-8')
+    msg['Subject'] = 'Новая заявка с сайта'
+    msg['From'] = smtp_login
+    msg['To'] = smtp_login
 
     try:
-        req = urllib.request.Request(telegram_url, data=data, method='POST')
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            resp.read()
+        with smtplib.SMTP_SSL('smtp.yandex.ru', 465, timeout=8) as server:
+            server.login(smtp_login, smtp_password)
+            server.sendmail(smtp_login, [smtp_login], msg.as_string())
         sent = True
     except Exception:
         sent = False
