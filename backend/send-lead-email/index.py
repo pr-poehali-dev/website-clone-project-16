@@ -36,6 +36,7 @@ def handler(event: dict, context) -> dict:
     phone = body.get('phone', '')
     yclid = body.get('yclid', '')
     page_url = body.get('page_url', '')
+    click_time = body.get('click_time', '')
 
     smtp_login = os.environ.get('YANDEX_SMTP_LOGIN')
     smtp_password = os.environ.get('YANDEX_SMTP_PASSWORD')
@@ -51,6 +52,8 @@ def handler(event: dict, context) -> dict:
     ]
     if yclid:
         text_lines.append(f'yclid: {yclid}')
+    if click_time:
+        text_lines.append(f'Время клика: {click_time}')
     if page_url:
         text_lines.append(f'Страница: {page_url}')
 

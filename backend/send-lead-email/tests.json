@@ -10,7 +10,7 @@
       "name": "POST lead data",
       "method": "POST",
       "path": "/",
-      "body": {"name": "Test", "email": "test@test.com", "phone": "+79990000000", "yclid": "12345", "page_url": "https://example.com"},
+      "body": {"name": "Test", "email": "test@test.com", "phone": "+79990000000", "yclid": "12345", "page_url": "https://example.com", "click_time": "05.07.2026 12:35 UTC"},
       "expectedStatus": 200
     }
   ]

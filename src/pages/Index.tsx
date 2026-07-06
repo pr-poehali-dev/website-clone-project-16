@@ -98,6 +98,21 @@ function getUrlParam(p: string) {
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
+// Время начала текущей сессии (UTC), зафиксированное один раз при первом открытии сайта,
+// с округлением вперёд до целой минуты (12:34:45 -> 12:35)
+function getSessionClickTime() {
+  const KEY = 'session_click_time';
+  let stored = sessionStorage.getItem(KEY);
+  if (!stored) {
+    const now = new Date();
+    const rounded = new Date(Math.ceil(now.getTime() / 60000) * 60000);
+    const pad = (n: number) => String(n).padStart(2, '0');
+    stored = `${pad(rounded.getUTCDate())}.${pad(rounded.getUTCMonth() + 1)}.${rounded.getUTCFullYear()} ${pad(rounded.getUTCHours())}:${pad(rounded.getUTCMinutes())} UTC`;
+    sessionStorage.setItem(KEY, stored);
+  }
+  return stored;
+}
+
 function showError(id: string, msg: string) {
   const el = document.querySelector(id) as HTMLElement | null;
   if (el) el.textContent = msg;
@@ -170,6 +185,7 @@ export default function Index() {
             phone,
             yclid: readCookie('yclid') || '',
             page_url: window.location.href,
+            click_time: getSessionClickTime(),
           });
           // text/plain — "простой" тип запроса, браузер отправляет его сразу, без предварительной проверки сервера
           const sentViaBeacon = navigator.sendBeacon
