@@ -24,6 +24,17 @@ def handler(event: dict, context) -> dict:
 
     headers = {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'}
 
+    if method == 'GET' and (event.get('queryStringParameters') or {}).get('debug_max_updates'):
+        bot_token = os.environ.get('MAX_BOT_TOKEN')
+        try:
+            url = 'https://platform-api.max.ru/updates'
+            req = urllib.request.Request(url, headers={'Authorization': bot_token})
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                data = resp.read().decode('utf-8')
+            return {'statusCode': 200, 'headers': headers, 'body': data}
+        except Exception as e:
+            return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'error': str(e)})}
+
     if method != 'POST':
         return {'statusCode': 405, 'headers': headers, 'body': json.dumps({'error': 'Method not allowed'})}
 
