@@ -2,6 +2,7 @@ import base64
 import json
 import os
 import smtplib
+import urllib.request
 from email.mime.text import MIMEText
 
 
@@ -72,4 +73,22 @@ def handler(event: dict, context) -> dict:
     except Exception:
         sent = False
 
-    return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': sent})}
+    max_sent = send_to_max(text)
+
+    return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': sent, 'max_sent': max_sent})}
+
+
+def send_to_max(text: str) -> bool:
+    bot_token = os.environ.get('MAX_BOT_TOKEN')
+    chat_id = os.environ.get('MAX_CHAT_ID')
+    if not bot_token or not chat_id:
+        return False
+    try:
+        url = f'https://botapi.max.ru/messages?chat_id={chat_id}&access_token={bot_token}'
+        data = json.dumps({'text': text}).encode('utf-8')
+        req = urllib.request.Request(url, data=data, method='POST', headers={'Content-Type': 'application/json'})
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            resp.read()
+        return True
+    except Exception:
+        return False
