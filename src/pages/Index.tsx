@@ -165,7 +165,10 @@ export default function Index() {
       return true;
     }
 
+    let isSubmitting = false;
+
     function validateForm() {
+      if (isSubmitting) return;
       const name = (document.querySelector('#name_981236568851782220940') as HTMLInputElement).value.trim();
       const email = (document.querySelector('#email_981236568851782220940') as HTMLInputElement).value.trim();
       const phone = (document.querySelector('#phone_981236568851782220940') as HTMLInputElement).value.trim();
@@ -175,6 +178,8 @@ export default function Index() {
       const pOk = isRequired(phone, '#e_f_981236568851782220940');
       const aOk = isChecked(approval);
       if (eOk && nOk && pOk && aOk) {
+        isSubmitting = true;
+        if (btn) (btn as HTMLButtonElement).disabled = true;
         if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(110110789, 'reachGoal', 'lead_goal');
 
         // Параллельная отправка лида на почту (sendBeacon переживает переход/сабмит формы на другой домен)
@@ -208,7 +213,8 @@ export default function Index() {
     }
 
     const btn = document.getElementById('btnform_981236568851782220940');
-    btn?.addEventListener('click', (e) => { e.preventDefault(); validateForm(); });
+    const handleBtnClick = (e: Event) => { e.preventDefault(); validateForm(); };
+    btn?.addEventListener('click', handleBtnClick);
 
     let debounceTimer: ReturnType<typeof setTimeout>;
     const onInput = (e: Event) => {
@@ -224,7 +230,7 @@ export default function Index() {
     f.addEventListener('input', onInput);
 
     return () => {
-      btn?.removeEventListener('click', validateForm);
+      btn?.removeEventListener('click', handleBtnClick);
       f.removeEventListener('input', onInput);
     };
   }, []);
