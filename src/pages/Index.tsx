@@ -184,7 +184,7 @@ export default function Index() {
 
         const tmrWindow = window as unknown as { _tmr?: Array<Record<string, unknown>> };
         const _tmr = tmrWindow._tmr || (tmrWindow._tmr = []);
-        _tmr.push({ type: 'reachGoal', id: 3780029, goal: 'Лид' });
+        _tmr.push({ type: 'reachGoal', id: 3780029, goal: 'lead_goal' });
 
         // Параллельная отправка лида на почту (sendBeacon переживает переход/сабмит формы на другой домен)
         try {
