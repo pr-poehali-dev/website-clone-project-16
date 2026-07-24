@@ -182,6 +182,10 @@ export default function Index() {
         if (btn) (btn as HTMLButtonElement).disabled = true;
         if (typeof (window as unknown as {ym?: unknown}).ym === 'function') (window as unknown as {ym: (id: number, type: string, goal: string) => void}).ym(110110789, 'reachGoal', 'lead_goal');
 
+        const tmrWindow = window as unknown as { _tmr?: Array<Record<string, unknown>> };
+        const _tmr = tmrWindow._tmr || (tmrWindow._tmr = []);
+        _tmr.push({ type: 'reachGoal', id: 3780029, goal: 'Лид' });
+
         // Параллельная отправка лида на почту (sendBeacon переживает переход/сабмит формы на другой домен)
         try {
           const leadPayload = JSON.stringify({
