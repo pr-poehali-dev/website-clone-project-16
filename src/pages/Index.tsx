@@ -304,7 +304,7 @@ export default function Index() {
           </div>
         </div>
         <div className="mt-6">
-          <img src={IMG_HERO} alt="Изделия из бумажной лозы" loading="eager" fetchPriority="high" decoding="sync" className="rounded-3xl w-full object-cover shadow-lg" />
+          <img src={IMG_HERO} alt="Изделия из бумажной лозы" loading="lazy" className="rounded-3xl w-full object-cover shadow-lg" />
         </div>
       </section>
 
@@ -389,7 +389,7 @@ export default function Index() {
             <p className="text-base text-[#1F5B4E] whitespace-nowrap">«Подборка готовых решений из лозы»</p>
           </div>
           <div className="flex justify-end">
-            <img src={IMG_GIFT} alt="Подарки" loading="eager" fetchPriority="high" decoding="sync" className="w-72 object-contain" style={{ background: 'none' }} />
+            <img src={IMG_GIFT} alt="Подарки" loading="lazy" className="w-72 object-contain" style={{ background: 'none' }} />
           </div>
         </div>
       </section>
@@ -448,19 +448,19 @@ export default function Index() {
         <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* Мобиль: два круга */}
           <div className="relative h-[420px] md:hidden">
-            <img src={IMG_CIRCLE1} className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
-            <img src={IMG_HEARTS} className="absolute top-8 right-0 w-44 h-44 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_CIRCLE1} loading="lazy" className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_HEARTS} loading="lazy" className="absolute top-8 right-0 w-44 h-44 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
             <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full shadow-lg border-4 border-white overflow-hidden">
-              <img src={IMG_CIRCLE2} className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
+              <img src={IMG_CIRCLE2} loading="lazy" className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
             </div>
           </div>
 
           {/* ПК: три позиционированных круга */}
           <div className="relative h-[500px] hidden md:block">
-            <img src={IMG_CIRCLE1} className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
-            <img src={IMG_HEARTS} className="absolute top-8 right-0 w-60 h-60 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_CIRCLE1} loading="lazy" className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_HEARTS} loading="lazy" className="absolute top-8 right-0 w-60 h-60 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
             <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full shadow-lg border-4 border-white overflow-hidden">
-              <img src={IMG_CIRCLE2} className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
+              <img src={IMG_CIRCLE2} loading="lazy" className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
             </div>
           </div>
 
@@ -563,6 +563,7 @@ export default function Index() {
               <img
                 src={IMG_HEARTS}
                 alt="Изделия из бумажной лозы"
+                loading="lazy"
                 className="rounded-3xl w-full object-cover shadow-lg"
               />
             </div>
