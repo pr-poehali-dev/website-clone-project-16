@@ -683,11 +683,19 @@ export default function Index() {
 
             <div className="flex flex-col gap-3 md:items-end">
               <p className="text-xs uppercase tracking-widest text-white/60">Способы оплаты</p>
-              <img
-                src="https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/9a74db14-b5d6-4bc6-a75e-d3ff37e3bd2b.png"
-                alt="Способы оплаты: Покупай со Сбером, Тинькофф"
-                className="h-24 w-auto object-contain rounded-lg bg-white/95 p-2"
-              />
+              <div className="flex items-center gap-3 bg-white/95 rounded-lg p-3">
+                <img
+                  src="/images/pay-pokupay.webp"
+                  alt="Покупай со Сбером"
+                  className="h-10 w-auto object-contain"
+                />
+                <div className="w-px h-8 bg-black/10" />
+                <img
+                  src="/images/pay-tinkoff.webp"
+                  alt="Тинькофф"
+                  className="h-9 w-auto object-contain"
+                />
+              </div>
             </div>
           </div>
 
