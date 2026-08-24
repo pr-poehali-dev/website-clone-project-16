@@ -655,7 +655,10 @@ export default function Index() {
             <div>
               <p className="text-white font-hand font-semibold text-3xl leading-tight">Школа плетения</p>
               <p className="text-white font-hand font-semibold text-3xl leading-tight -mt-1">Татьяны Юровой</p>
-              <p className="mt-4 text-xs leading-relaxed text-white/60">
+            </div>
+
+            <div className="md:text-center">
+              <p className="text-xs leading-relaxed text-white/60">
                 ИП ЮРОВА ТАТЬЯНА ВИТАЛЬЕВНА<br />
                 ИНН 260806471930<br />
                 ОГРН 320265100114127<br />
@@ -664,7 +667,7 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-2 md:items-center md:justify-end">
+            <div className="flex flex-col gap-2 md:items-end">
               <a
                 href="http://loza-school.ru/privacy"
                 target="_blank"
@@ -681,22 +684,6 @@ export default function Index() {
               >
                 Договор оферты
               </a>
-            </div>
-
-            <div className="flex flex-col gap-3 md:items-end">
-              <p className="text-xs uppercase tracking-widest text-white/60">Способы оплаты</p>
-              <div className="flex items-center gap-5 md:flex-col md:items-end md:gap-4">
-                <img
-                  src="/images/pay-pokupay.webp"
-                  alt="Покупай со Сбером"
-                  className="h-12 md:h-16 w-auto object-contain"
-                />
-                <img
-                  src="/images/pay-tinkoff.webp"
-                  alt="Тинькофф"
-                  className="h-11 md:h-20 w-auto object-contain"
-                />
-              </div>
             </div>
           </div>
         </div>
