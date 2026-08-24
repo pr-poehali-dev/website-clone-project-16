@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useInView } from '@/hooks/use-in-view';
+import { GIFT_DATA_URI } from '@/assets/gift-data-uri';
 
 const IMG_HERO = '/images/hero.webp';
 const IMG_HEARTS = '/images/hearts.webp';
@@ -292,7 +293,7 @@ export default function Index() {
             <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
             <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
           </div>
-          <img src={IMG_GIFT} alt="Подарки" loading="eager" fetchPriority="high" decoding="sync" className="w-32 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginLeft: '-0.5rem', marginTop: '-1.5rem', marginBottom: '-2rem' }} />
+          <img src={GIFT_DATA_URI} alt="Подарки" loading="eager" fetchPriority="high" decoding="sync" className="w-32 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginLeft: '-0.5rem', marginTop: '-1.5rem', marginBottom: '-2rem' }} />
         </div>
         <div className="mt-3">
           <p className="font-bold tracking-widest text-[#1F5B4E] text-xs text-center mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
