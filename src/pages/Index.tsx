@@ -645,6 +645,57 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* ===== FOOTER ===== */}
+      <footer className="bg-[#1F5B4E] text-white/80">
+        <div className="max-w-[1200px] mx-auto px-4 py-10 md:py-14">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-6">
+            <div>
+              <p className="text-white font-hand font-semibold text-3xl leading-tight">Школа плетения</p>
+              <p className="text-white font-hand font-semibold text-3xl leading-tight -mt-1">Татьяны Юровой</p>
+              <p className="mt-4 text-xs leading-relaxed text-white/60">
+                ИП ЮРОВА ТАТЬЯНА ВИТАЛЬЕВНА<br />
+                ИНН 260806471930<br />
+                ОГРН 320265100114127<br />
+                Российская Федерация, Ставрополь,<br />
+                ул. Пирогова, д. 5а, корпус 9, кв. 104
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 md:items-center md:pt-1">
+              <a
+                href="http://loza-school.ru/privacy"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm underline underline-offset-2 text-white/80 hover:text-white transition-colors w-fit"
+              >
+                Политика конфиденциальности
+              </a>
+              <a
+                href="https://loza-school-kurs.ru/pl/fileservice/user/file/download/h/5b5af2531e82d8c3c13104b8af1e66da.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm underline underline-offset-2 text-white/80 hover:text-white transition-colors w-fit"
+              >
+                Договор оферты
+              </a>
+            </div>
+
+            <div className="flex flex-col gap-3 md:items-end">
+              <p className="text-xs uppercase tracking-widest text-white/60">Способы оплаты</p>
+              <img
+                src="https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/9a74db14-b5d6-4bc6-a75e-d3ff37e3bd2b.png"
+                alt="Способы оплаты: Покупай со Сбером, Тинькофф"
+                className="h-24 w-auto object-contain rounded-lg bg-white/95 p-2"
+              />
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 mt-8 pt-6 text-center text-xs text-white/50">
+            © {new Date().getFullYear()} Школа плетения Татьяны Юровой. Все права защищены.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
