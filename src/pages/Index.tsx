@@ -250,7 +250,7 @@ export default function Index() {
         <h1 className="font-black leading-[1.15] text-center">
           <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>С НУЛЯ ДО ПЕРВОГО</span>
           <span className="text-[#F2C12E] block whitespace-nowrap" style={{ fontSize: 'min(7.8vw, 2.5rem)' }}>ИЗДЕЛИЯ</span>
-          <span className="block font-hand text-[#1F5B4E]" style={{ fontSize: 'min(9vw, 3rem)', transform: 'translateX(30%) translateY(-65%) rotate(-25deg)', transformOrigin: 'center' }}>из бумаги</span>
+          <span className="block font-hand font-semibold text-[#1F5B4E]" style={{ fontSize: 'min(9vw, 3rem)', transform: 'translateX(30%) translateY(-65%) rotate(-25deg)', transformOrigin: 'center' }}>из бумаги</span>
         </h1>
         <div className="mt-1 border-2 border-[#1F5B4E] rounded-2xl px-5 py-4">
           <p className="font-bold text-[#1F5B4E] text-sm leading-snug">
@@ -304,7 +304,7 @@ export default function Index() {
             {/* «из бумаги» — правее центра, наезжает на фото */}
             <div className="flex justify-end -mt-14 relative z-10">
               <span
-                className="font-hand text-[#1F5B4E]"
+                className="font-hand font-semibold text-[#1F5B4E]"
                 style={{ fontSize: 'min(5.7vw, 4.8rem)', display: 'inline-block', transform: 'rotate(-5deg)', transformOrigin: 'right center' }}
               >
                 из бумаги
@@ -417,7 +417,7 @@ export default function Index() {
           Вас ждет 4 урока, на которых вы:
         </p>
         <div className="md:hidden text-center mb-6">
-          <span className="inline-block text-[#F2C12E] text-4xl font-hand">
+          <span className="inline-block text-[#F2C12E] text-4xl font-hand font-semibold">
             Сплетете первое изделие уже<br />через три дня
           </span>
         </div>
