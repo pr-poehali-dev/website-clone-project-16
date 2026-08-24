@@ -683,17 +683,16 @@ export default function Index() {
 
             <div className="flex flex-col gap-3 md:items-end">
               <p className="text-xs uppercase tracking-widest text-white/60">Способы оплаты</p>
-              <div className="flex items-center gap-3 bg-white/95 rounded-lg p-3">
+              <div className="flex items-center gap-5">
                 <img
                   src="/images/pay-pokupay.webp"
                   alt="Покупай со Сбером"
-                  className="h-10 w-auto object-contain"
+                  className="h-10 md:h-16 w-auto object-contain"
                 />
-                <div className="w-px h-8 bg-black/10" />
                 <img
                   src="/images/pay-tinkoff.webp"
                   alt="Тинькофф"
-                  className="h-9 w-auto object-contain"
+                  className="h-9 md:h-14 w-auto object-contain"
                 />
               </div>
             </div>
