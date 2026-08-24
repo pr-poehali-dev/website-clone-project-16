@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
+import { useInView } from '@/hooks/use-in-view';
 
 const IMG_HERO = '/images/hero.webp';
 const IMG_HEARTS = '/images/hearts.webp';
@@ -43,6 +44,23 @@ const TimerDigit = ({ value }: { value: string }) => (
 const TimerColon = () => (
   <span className="text-2xl md:text-3xl font-black text-[#1F5B4E] pb-1">:</span>
 );
+
+const StepReveal = ({ children, delay }: { children: React.ReactNode; delay: number }) => {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className="transition-all duration-700 ease-out"
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? 'translateY(0)' : 'translateY(40px)',
+        transitionDelay: inView ? `${delay}ms` : '0ms',
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const IF_CARDS_MOBILE = [
   <><b>Устали от рутины</b><br />и хочется внести<br />в жизнь разнообразия</>,
@@ -492,22 +510,24 @@ export default function Index() {
         {/* Мобиль: вертикально с пунктирными стрелками */}
         <div className="md:hidden">
           {STEPS.map((step, i) => (
-            <div key={i} className="flex gap-4">
-              <div className="flex flex-col items-center w-16 shrink-0">
-                <div className="w-16 h-16 rounded-full bg-[#F7EFE2] border border-[#E8D9B8] flex items-center justify-center font-extrabold text-[#1F5B4E] text-xs shrink-0">
-                  {step.n}
+            <StepReveal key={i} delay={i * 100}>
+              <div className="flex gap-4">
+                <div className="flex flex-col items-center w-16 shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-[#F7EFE2] border border-[#E8D9B8] flex items-center justify-center font-extrabold text-[#1F5B4E] text-xs shrink-0">
+                    {step.n}
+                  </div>
+                  {i < STEPS.length - 1 && (
+                    <svg width="20" height="72" viewBox="0 0 20 72" fill="none" className="mt-1">
+                      <path d="M10 0 C4 18 16 36 10 54 L10 66" stroke="#1F5B4E" strokeWidth="1.5" strokeDasharray="4 3" fill="none"/>
+                      <polygon points="5,62 10,72 15,62" fill="#1F5B4E"/>
+                    </svg>
+                  )}
                 </div>
-                {i < STEPS.length - 1 && (
-                  <svg width="20" height="72" viewBox="0 0 20 72" fill="none" className="mt-1">
-                    <path d="M10 0 C4 18 16 36 10 54 L10 66" stroke="#1F5B4E" strokeWidth="1.5" strokeDasharray="4 3" fill="none"/>
-                    <polygon points="5,62 10,72 15,62" fill="#1F5B4E"/>
-                  </svg>
-                )}
+                <div className="pt-3 pb-6">
+                  <p className="text-sm text-[#1F5B4E] leading-relaxed">{step.text}</p>
+                </div>
               </div>
-              <div className="pt-3 pb-6">
-                <p className="text-sm text-[#1F5B4E] leading-relaxed">{step.text}</p>
-              </div>
-            </div>
+            </StepReveal>
           ))}
         </div>
 
