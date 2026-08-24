@@ -654,8 +654,8 @@ export default function Index() {
         <div className="max-w-[1200px] mx-auto px-4 py-10 md:py-14">
           <div className="grid md:grid-cols-3 gap-8 md:gap-6">
             <div>
-              <p className="text-white font-hand font-semibold text-3xl leading-tight">Школа плетения</p>
-              <p className="text-white font-hand font-semibold text-3xl leading-tight -mt-1">Татьяны Юровой</p>
+              <p className="text-white font-hand font-semibold text-3xl md:text-4xl leading-tight">Школа плетения</p>
+              <p className="text-white font-hand font-semibold text-3xl md:text-4xl leading-tight -mt-1">Татьяны Юровой</p>
             </div>
 
             <div className="md:text-center">
