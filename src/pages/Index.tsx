@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 
-const IMG_HERO = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/65f73e0d-1027-4f46-9d76-a13fcb0f3391.png';
-const IMG_HEARTS = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/593b5e8e-bf47-478f-9b2e-2fbb3a276b0c.png';
-const IMG_GIFT = 'https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/9dc99d79-8444-40ec-b8ec-7af67bf0f0e6.png';
+const IMG_HERO = '/images/hero.webp';
+const IMG_HEARTS = '/images/hearts.webp';
+const IMG_GIFT = '/images/gift.webp';
+const IMG_CIRCLE1 = '/images/circle1.webp';
+const IMG_CIRCLE2 = '/images/circle2.webp';
 
 const scrollToForm = () => {
   document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
@@ -423,19 +425,19 @@ export default function Index() {
         <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* Мобиль: два круга */}
           <div className="relative h-[420px] md:hidden">
-            <img src="https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/def6222e-c18a-4b2b-8476-a031da020717.png" className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_CIRCLE1} className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
             <img src={IMG_HEARTS} className="absolute top-8 right-0 w-44 h-44 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
             <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full shadow-lg border-4 border-white overflow-hidden">
-              <img src="https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/ad63ee3b-30b2-4c37-8e21-d8db1f157043.png" className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
+              <img src={IMG_CIRCLE2} className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
             </div>
           </div>
 
           {/* ПК: три позиционированных круга */}
           <div className="relative h-[500px] hidden md:block">
-            <img src="https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/def6222e-c18a-4b2b-8476-a031da020717.png" className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
+            <img src={IMG_CIRCLE1} className="absolute top-0 left-10 w-36 h-36 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
             <img src={IMG_HEARTS} className="absolute top-8 right-0 w-60 h-60 rounded-full object-cover shadow-lg border-4 border-white" alt="" />
             <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full shadow-lg border-4 border-white overflow-hidden">
-              <img src="https://cdn.poehali.dev/projects/db6af359-6876-4ac9-8d16-d1dce02a757a/bucket/ad63ee3b-30b2-4c37-8e21-d8db1f157043.png" className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
+              <img src={IMG_CIRCLE2} className="w-full h-full object-cover" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }} alt="" />
             </div>
           </div>
 
