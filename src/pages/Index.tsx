@@ -292,7 +292,7 @@ export default function Index() {
             <p className="text-xs text-[#1F5B4E]">«Памятка новичка по работе с лозой»</p>
             <p className="text-xs text-[#1F5B4E]">«Подборка готовых решений из лозы»</p>
           </div>
-          <img src={IMG_GIFT} alt="Подарки" className="w-32 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginLeft: '-0.5rem', marginTop: '-1.5rem', marginBottom: '-2rem' }} />
+          <img src={IMG_GIFT} alt="Подарки" loading="eager" fetchPriority="high" decoding="sync" className="w-32 object-contain shrink-0 relative z-10" style={{ marginRight: '-1rem', marginLeft: '-0.5rem', marginTop: '-1.5rem', marginBottom: '-2rem' }} />
         </div>
         <div className="mt-3">
           <p className="font-bold tracking-widest text-[#1F5B4E] text-xs text-center mb-3">БОНУСЫ СГОРЯТ ЧЕРЕЗ:</p>
@@ -302,7 +302,7 @@ export default function Index() {
           </div>
         </div>
         <div className="mt-6">
-          <img src={IMG_HERO} alt="Изделия из бумажной лозы" className="rounded-3xl w-full object-cover shadow-lg" />
+          <img src={IMG_HERO} alt="Изделия из бумажной лозы" loading="eager" fetchPriority="high" decoding="sync" className="rounded-3xl w-full object-cover shadow-lg" />
         </div>
       </section>
 
@@ -368,6 +368,9 @@ export default function Index() {
               <img
                 src={IMG_HERO}
                 alt="Изделия из бумажной лозы"
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
                 className="w-full object-cover object-top rounded-3xl shadow-xl absolute inset-0 h-full"
               />
             </div>
@@ -384,7 +387,7 @@ export default function Index() {
             <p className="text-base text-[#1F5B4E] whitespace-nowrap">«Подборка готовых решений из лозы»</p>
           </div>
           <div className="flex justify-end">
-            <img src={IMG_GIFT} alt="Подарки" className="w-72 object-contain" style={{ background: 'none' }} />
+            <img src={IMG_GIFT} alt="Подарки" loading="eager" fetchPriority="high" decoding="sync" className="w-72 object-contain" style={{ background: 'none' }} />
           </div>
         </div>
       </section>
