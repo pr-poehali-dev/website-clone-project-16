@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useInView } from '@/hooks/use-in-view';
 import { GIFT_DATA_URI } from '@/assets/gift-data-uri';
+import { HERO_DATA_URI } from '@/assets/hero-data-uri';
 
 const IMG_HERO = '/images/hero.webp';
 const IMG_HEARTS = '/images/hearts.webp';
@@ -367,7 +368,7 @@ export default function Index() {
             {/* Фото — абсолютно позиционировано, верх у рамки ПОШАГОВЫЙ РАЗБОР, низ у таймера */}
             <div className="flex-1" style={{ alignSelf: 'stretch', position: 'relative' }}>
               <img
-                src={IMG_HERO}
+                src={HERO_DATA_URI}
                 alt="Изделия из бумажной лозы"
                 loading="eager"
                 fetchPriority="high"
