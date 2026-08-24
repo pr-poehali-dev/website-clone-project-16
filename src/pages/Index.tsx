@@ -698,10 +698,6 @@ export default function Index() {
               </div>
             </div>
           </div>
-
-          <div className="border-t border-white/10 mt-8 pt-6 text-center text-xs text-white/50">
-            © {new Date().getFullYear()} Школа плетения Татьяны Юровой.<br className="md:hidden" /> Все права защищены.
-          </div>
         </div>
       </footer>
     </div>
