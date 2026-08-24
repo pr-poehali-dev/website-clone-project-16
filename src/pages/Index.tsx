@@ -662,7 +662,7 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-2 md:items-center md:pt-1">
+            <div className="flex flex-col gap-2 md:items-center md:justify-end">
               <a
                 href="http://loza-school.ru/privacy"
                 target="_blank"
