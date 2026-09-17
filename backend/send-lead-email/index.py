@@ -38,6 +38,7 @@ def handler(event: dict, context) -> dict:
     yclid = body.get('yclid', '')
     page_url = body.get('page_url', '')
     click_time = body.get('click_time', '')
+    user_ip = event.get('requestContext', {}).get('identity', {}).get('sourceIp', '')
 
     smtp_login = os.environ.get('YANDEX_SMTP_LOGIN')
     smtp_password = os.environ.get('YANDEX_SMTP_PASSWORD')
@@ -57,6 +58,8 @@ def handler(event: dict, context) -> dict:
         text_lines.append(f'Время клика: {click_time}')
     if page_url:
         text_lines.append(f'Страница: {page_url}')
+    if user_ip:
+        text_lines.append(f'IP: {user_ip}')
 
     text = '\n'.join(text_lines)
 
