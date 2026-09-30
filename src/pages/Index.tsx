@@ -98,7 +98,7 @@ const STEPS = [
   { n: 'ШАГ 4', text: <span>Вы скрутите свою первую лозу и изготовите первое изделие. <b>Поздравляю!</b></span> },
 ];
 
-const FORM_ID = 's_f_981236568851782220940';
+const FORM_ID = 's_f_981236568851790774548';
 const LEAD_EMAIL_URL = 'https://functions.poehali.dev/bb2ec21a-e37c-47ee-9c61-11a1821e4bb5';
 
 function setCookie(name: string, value: string, days: number) {
@@ -181,7 +181,7 @@ export default function Index() {
     }
 
     function isChecked(el: HTMLInputElement) {
-      const row = document.getElementById('row_approval_981236568851782220940');
+      const row = document.getElementById('row_approval_981236568851790774548');
       if (!el.checked) { row?.classList.add('outline', 'outline-2', 'outline-red-400', 'rounded'); return false; }
       row?.classList.remove('outline', 'outline-2', 'outline-red-400', 'rounded');
       return true;
@@ -191,13 +191,13 @@ export default function Index() {
 
     function validateForm() {
       if (isSubmitting) return;
-      const name = (document.querySelector('#name_981236568851782220940') as HTMLInputElement).value.trim();
-      const email = (document.querySelector('#email_981236568851782220940') as HTMLInputElement).value.trim();
-      const phone = (document.querySelector('#phone_981236568851782220940') as HTMLInputElement).value.trim();
-      const approval = document.querySelector('#approval_981236568851782220940') as HTMLInputElement;
-      const eOk = isEmailValid(email, '#e_m_981236568851782220940');
-      const nOk = isRequired(name, '#e_n_981236568851782220940');
-      const pOk = isRequired(phone, '#e_f_981236568851782220940');
+      const name = (document.querySelector('#name_981236568851790774548') as HTMLInputElement).value.trim();
+      const email = (document.querySelector('#email_981236568851790774548') as HTMLInputElement).value.trim();
+      const phone = (document.querySelector('#phone_981236568851790774548') as HTMLInputElement).value.trim();
+      const approval = document.querySelector('#approval_981236568851790774548') as HTMLInputElement;
+      const eOk = isEmailValid(email, '#e_m_981236568851790774548');
+      const nOk = isRequired(name, '#e_n_981236568851790774548');
+      const pOk = isRequired(phone, '#e_f_981236568851790774548');
       const aOk = isChecked(approval);
       if (eOk && nOk && pOk && aOk) {
         isSubmitting = true;
@@ -238,7 +238,7 @@ export default function Index() {
       }
     }
 
-    const btn = document.getElementById('btnform_981236568851782220940');
+    const btn = document.getElementById('btnform_981236568851790774548');
     const handleBtnClick = (e: Event) => { e.preventDefault(); validateForm(); };
     btn?.addEventListener('click', handleBtnClick);
 
@@ -247,10 +247,10 @@ export default function Index() {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
         const target = e.target as HTMLInputElement;
-        if (target.id === 'name_981236568851782220940') isRequired(target.value.trim(), '#e_n_981236568851782220940');
-        if (target.id === 'email_981236568851782220940') isEmailValid(target.value.trim(), '#e_m_981236568851782220940');
-        if (target.id === 'phone_981236568851782220940') isRequired(target.value.trim(), '#e_f_981236568851782220940');
-        if (target.id === 'approval_981236568851782220940') isChecked(target);
+        if (target.id === 'name_981236568851790774548') isRequired(target.value.trim(), '#e_n_981236568851790774548');
+        if (target.id === 'email_981236568851790774548') isEmailValid(target.value.trim(), '#e_m_981236568851790774548');
+        if (target.id === 'phone_981236568851790774548') isRequired(target.value.trim(), '#e_f_981236568851790774548');
+        if (target.id === 'approval_981236568851790774548') isChecked(target);
       }, 500);
     };
     f.addEventListener('input', onInput);
@@ -573,45 +573,45 @@ export default function Index() {
               <p className="text-center text-[#1F5B4E] text-sm mb-5">Внимательно проверьте данные при вводе!</p>
 
               <form
-                id="s_f_981236568851782220940"
+                id="s_f_981236568851790774548"
                 method="post"
-                action="https://salid.site/add-lead.php?o=98123&w=656885&s=1&t_m=98123-3"
+                action="https://salid.site/add-lead.php?o=98123&w=656885&s=4&t_m=98123-5"
                 className="space-y-3"
               >
                 {/* Поле Имя */}
                 <div>
                   <input
-                    id="name_981236568851782220940"
+                    id="name_981236568851790774548"
                     type="text"
                     name="name"
                     placeholder="Введите ваше имя"
                     className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
                   />
-                  <div id="e_n_981236568851782220940" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
+                  <div id="e_n_981236568851790774548" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
                 </div>
 
                 {/* Поле Email */}
                 <div>
                   <input
-                    id="email_981236568851782220940"
+                    id="email_981236568851790774548"
                     type="text"
                     name="email"
                     placeholder="Введите ваш эл. адрес"
                     className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
                   />
-                  <div id="e_m_981236568851782220940" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
+                  <div id="e_m_981236568851790774548" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
                 </div>
 
                 {/* Поле Телефон */}
                 <div>
                   <input
-                    id="phone_981236568851782220940"
+                    id="phone_981236568851790774548"
                     type="text"
                     name="phone"
                     placeholder="Введите ваш телефон"
                     className="w-full bg-white rounded-xl border border-[#C8B99A] px-4 py-3.5 text-[#1F5B4E] text-sm outline-none focus:border-[#1F5B4E] transition placeholder:text-[#A09070]"
                   />
-                  <div id="e_f_981236568851782220940" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
+                  <div id="e_f_981236568851790774548" className="text-red-500 text-xs mt-1 min-h-[1rem]" />
                 </div>
 
                 {/* Скрытые служебные поля партнёрской системы */}
@@ -620,24 +620,24 @@ export default function Index() {
                 <input type="hidden" id="yclid_field" name="yclid_field" value="" />
 
                 {/* Чекбокс согласия */}
-                <div id="row_approval_981236568851782220940" className="flex gap-3 items-start pt-1">
+                <div id="row_approval_981236568851790774548" className="flex gap-3 items-start pt-1">
                   <input
-                    id="approval_981236568851782220940"
+                    id="approval_981236568851790774548"
                     type="checkbox"
                     name="approval"
                     className="mt-0.5 shrink-0 w-4 h-4 accent-[#1F5B4E] cursor-pointer"
                   />
-                  <label htmlFor="approval_981236568851782220940" className="text-xs text-[#1F5B4E]/70 leading-relaxed cursor-pointer">
+                  <label htmlFor="approval_981236568851790774548" className="text-xs text-[#1F5B4E]/70 leading-relaxed cursor-pointer">
                     <a href="https://loza-school.ru/privacy" target="_blank" rel="noreferrer" className="underline text-[#1F5B4E]/70">
                       Я согласен на обработку моих персональных данных в соответствии с Политикой конфиденциальности, Договором оферты, Согласием и на получение рассылки
                     </a>
                   </label>
                 </div>
-                <div id="e_a_981236568851782220940" className="text-red-500 text-xs min-h-[1rem]" />
+                <div id="e_a_981236568851790774548" className="text-red-500 text-xs min-h-[1rem]" />
 
                 {/* Кнопка */}
                 <button
-                  id="btnform_981236568851782220940"
+                  id="btnform_981236568851790774548"
                   type="button"
                   className="w-full bg-[#1F5B4E] hover:bg-[#173F37] transition-colors text-white font-bold text-base py-4 rounded-xl shadow mt-1 cursor-pointer"
                 >
