@@ -46,7 +46,7 @@ def handler(event: dict, context) -> dict:
         return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': False, 'note': 'SMTP secrets not configured yet'})}
 
     lines = [
-        'Новая заявка с сайта',
+        'Лид плетение',
         f'Имя: {name}',
         f'Email: {mask_email(email)}',
         f'Телефон {mask_phone(phone)}',
@@ -59,7 +59,7 @@ def handler(event: dict, context) -> dict:
     text = '\n'.join(lines)
 
     msg = MIMEText(text, 'plain', 'utf-8')
-    msg['Subject'] = 'Новая заявка с сайта'
+    msg['Subject'] = 'Лид плетение'
     msg['From'] = smtp_login
     msg['To'] = smtp_login
 
