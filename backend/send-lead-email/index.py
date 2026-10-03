@@ -4,6 +4,7 @@ import os
 import re
 import smtplib
 import urllib.request
+from urllib.parse import urlparse, parse_qs
 from email.mime.text import MIMEText
 
 
@@ -51,10 +52,13 @@ def handler(event: dict, context) -> dict:
         f'Email: {mask_email(email)}',
         f'Телефон {mask_phone(phone)}',
     ]
-    if yclid:
-        lines.append(f'yclid: {yclid}')
-    if page_url:
-        lines.append(f'Страница: {page_url}')
+    query = parse_qs(urlparse(page_url).query) if page_url else {}
+    y_ref = (query.get('y_ref') or [''])[0]
+    utm_campaign = (query.get('utm_campaign') or [''])[0]
+    if y_ref:
+        lines.append(f'y_ref={y_ref}')
+    if utm_campaign:
+        lines.append(f'utm_campaign={utm_campaign}')
 
     text = '\n'.join(lines)
 
