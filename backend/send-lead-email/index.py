@@ -38,8 +38,6 @@ def handler(event: dict, context) -> dict:
     phone = body.get('phone', '')
     yclid = body.get('yclid', '')
     page_url = body.get('page_url', '')
-    click_time = body.get('click_time', '')
-    user_ip = event.get('requestContext', {}).get('identity', {}).get('sourceIp', '')
 
     smtp_login = os.environ.get('YANDEX_SMTP_LOGIN')
     smtp_password = os.environ.get('YANDEX_SMTP_PASSWORD')
@@ -47,22 +45,18 @@ def handler(event: dict, context) -> dict:
     if not smtp_login or not smtp_password:
         return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': False, 'note': 'SMTP secrets not configured yet'})}
 
-    text_lines = [
+    lines = [
         'Новая заявка с сайта',
         f'Имя: {name}',
-        f'Email: {email}',
-        f'Телефон: {phone}',
+        f'Email: {mask_email(email)}',
+        f'Телефон {mask_phone(phone)}',
     ]
     if yclid:
-        text_lines.append(f'yclid: {yclid}')
-    if click_time:
-        text_lines.append(f'Время клика: {click_time}')
+        lines.append(f'yclid: {yclid}')
     if page_url:
-        text_lines.append(f'Страница: {page_url}')
-    if user_ip:
-        text_lines.append(f'IP: {user_ip}')
+        lines.append(f'Страница: {page_url}')
 
-    text = '\n'.join(text_lines)
+    text = '\n'.join(lines)
 
     msg = MIMEText(text, 'plain', 'utf-8')
     msg['Subject'] = 'Новая заявка с сайта'
@@ -77,18 +71,7 @@ def handler(event: dict, context) -> dict:
     except Exception:
         sent = False
 
-    max_lines = [
-        'Новая заявка с сайта',
-        f'Имя: {name}',
-        f'Email: {mask_email(email)}',
-        f'Телефон {mask_phone(phone)}',
-    ]
-    if yclid:
-        max_lines.append(f'yclid: {yclid}')
-    if page_url:
-        max_lines.append(f'Страница: {page_url}')
-
-    max_sent = send_to_max('\n'.join(max_lines))
+    max_sent = send_to_max(text)
 
     return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': sent, 'max_sent': max_sent})}
 
