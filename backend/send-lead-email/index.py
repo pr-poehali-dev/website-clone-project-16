@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import re
 import smtplib
 import urllib.request
 from email.mime.text import MIMEText
@@ -76,9 +77,47 @@ def handler(event: dict, context) -> dict:
     except Exception:
         sent = False
 
-    max_sent = send_to_max(text)
+    max_lines = [
+        'Новая заявка с сайта',
+        f'Имя: {name}',
+        f'Email: {mask_email(email)}',
+        f'Телефон {mask_phone(phone)}',
+    ]
+    if yclid:
+        max_lines.append(f'yclid: {yclid}')
+    if click_time:
+        max_lines.append(f'Время клика: {click_time}')
+    if page_url:
+        max_lines.append(f'Страница: {page_url}')
+
+    max_sent = send_to_max('\n'.join(max_lines))
 
     return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': sent, 'max_sent': max_sent})}
+
+
+def mask_phone(phone: str) -> str:
+    digits = re.sub(r'\D', '', phone or '')
+    if len(digits) <= 4:
+        return '*' * len(digits)
+    return '*' * (len(digits) - 4) + digits[-4:]
+
+
+def _mask_part(part: str) -> str:
+    if len(part) <= 2:
+        return part[:1] + '*' * (len(part) - 1)
+    return part[0] + '*' * (len(part) - 2) + part[-1]
+
+
+def mask_email(email: str) -> str:
+    if not email or '@' not in email:
+        return _mask_part(email or '')
+    local, domain = email.rsplit('@', 1)
+    if '.' in domain:
+        host, tld = domain.split('.', 1)
+        masked_domain = _mask_part(host) + '.' + tld
+    else:
+        masked_domain = _mask_part(domain)
+    return _mask_part(local) + '@' + masked_domain
 
 
 def send_to_max(text: str) -> bool:
