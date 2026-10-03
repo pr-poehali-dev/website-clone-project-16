@@ -85,8 +85,6 @@ def handler(event: dict, context) -> dict:
     ]
     if yclid:
         max_lines.append(f'yclid: {yclid}')
-    if click_time:
-        max_lines.append(f'Время клика: {click_time}')
     if page_url:
         max_lines.append(f'Страница: {page_url}')
 
