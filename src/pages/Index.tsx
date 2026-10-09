@@ -191,6 +191,8 @@ export default function Index() {
 
     function validateForm() {
       if (isSubmitting) return;
+      const honeypot = document.getElementById('hp_website_981236568851790774548') as HTMLInputElement | null;
+      if (honeypot && honeypot.value.trim() !== '') return;
       const name = (document.querySelector('#name_981236568851790774548') as HTMLInputElement).value.trim();
       const email = (document.querySelector('#email_981236568851790774548') as HTMLInputElement).value.trim();
       const phone = (document.querySelector('#phone_981236568851790774548') as HTMLInputElement).value.trim();
@@ -618,6 +620,17 @@ export default function Index() {
                 <input type="hidden" name="requestTime" value="1654496406" />
                 <input type="hidden" name="requestSimpleSign" value="da6e2c2936d8a1f300a895ffd36cfc06" />
                 <input type="hidden" id="yclid_field" name="yclid_field" value="" />
+
+                <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
+                  <label htmlFor="hp_website_981236568851790774548">Не заполняйте это поле</label>
+                  <input
+                    id="hp_website_981236568851790774548"
+                    type="text"
+                    name="website_url"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
 
                 {/* Чекбокс согласия */}
                 <div id="row_approval_981236568851790774548" className="flex gap-3 items-start pt-1">
