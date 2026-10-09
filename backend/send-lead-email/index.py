@@ -34,6 +34,9 @@ def handler(event: dict, context) -> dict:
         raw_body = base64.b64decode(raw_body).decode('utf-8')
     body = json.loads(raw_body or '{}')
 
+    if 'hp' not in body or str(body.get('hp') or '').strip() != '':
+        return {'statusCode': 200, 'headers': headers, 'body': json.dumps({'success': False, 'blocked': True})}
+
     name = body.get('name', '')
     email = body.get('email', '')
     phone = body.get('phone', '')

@@ -216,6 +216,7 @@ export default function Index() {
             name,
             email,
             phone,
+            hp: honeypot ? honeypot.value : '',
             yclid: readCookie('yclid') || '',
             page_url: window.location.href,
             click_time: getSessionClickTime(),
